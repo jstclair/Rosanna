@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Nancy.ViewEngines;
 using Nancy.ViewEngines.Razor;
 
 namespace Rosanna
@@ -12,7 +13,7 @@ namespace Rosanna
             {
                 return (path, view, model) => stream =>
                 {
-                    var result = new RazorViewEngine().RenderView(path + view + ".cshtml", model);
+                    var result = new RazorViewEngine(new AspNetTemplateLocator()).RenderView(path + view + ".cshtml", model);
                     result.Execute(stream);
                 };
             }

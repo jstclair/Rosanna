@@ -10,7 +10,7 @@ namespace Rosanna
         {
             Get["/"] = x =>
                        {
-                           return configuration.ToHtml("~/views/", "index", new BaseModel(configuration));
+                           return configuration.ToHtml("~/views/", "index", new IndexModel(configuration));
                        };
         }
     }

@@ -73,11 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\index.cshtml" />
-    <None Include="Views\Shared\Application.haml" />
-    <None Include="Views\about.haml" />
-    <None Include="Views\archives.haml" />
-    <None Include="Views\article.haml" />
-    <None Include="Views\index.haml" />
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>

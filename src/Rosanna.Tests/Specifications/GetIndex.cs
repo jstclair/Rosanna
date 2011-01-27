@@ -3,9 +3,9 @@ using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class IndexSpecifications : RosannaSpecification
+    public class GetIndex : RosannaSpecification
     {
-        public IndexSpecifications()
+        public GetIndex()
         {
             NavigateTo("/");
         }
@@ -19,7 +19,7 @@ namespace Rosanna.Tests.Specifications
         [Fact]
         public void Index_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>Hello</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>Index</h1>");
         }
     }
 }

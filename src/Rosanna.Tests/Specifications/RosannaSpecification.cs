@@ -7,7 +7,7 @@ namespace Rosanna.Tests.Specifications
         public static INancyEngine Engine;
         public static Response Response;
 
-        protected RosannaSpecification()
+        public RosannaSpecification()
         {
             Engine = new RosannaBootstrapper().GetEngine();
         }

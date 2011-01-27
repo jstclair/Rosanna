@@ -68,9 +68,7 @@
       <Name>Rosanna</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Articles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Views\index.cshtml" />
     <Content Include="Views\_Layout.cshtml" />

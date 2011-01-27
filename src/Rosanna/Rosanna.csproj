@@ -60,7 +60,9 @@
     <Compile Include="RosannaHttpRequestHandler.cs" />
     <Compile Include="RosannaServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ArchiveModel.cs" />
     <Compile Include="ViewModels\Article.cs" />
+    <Compile Include="ViewModels\ArticleModel.cs" />
     <Compile Include="ViewModels\BaseModel.cs" />
     <Compile Include="ViewModels\IndexModel.cs" />
   </ItemGroup>

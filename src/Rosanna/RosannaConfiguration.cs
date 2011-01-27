@@ -7,52 +7,32 @@ namespace Rosanna
 {
     public class RosannaConfiguration : IRosannaConfiguration
     {
-        public virtual Func<string, string, dynamic, Action<Stream>> ToHtml
+        public RosannaConfiguration()
         {
-            get
+            ToHtml = (path, view, model) => stream =>
             {
-                return (path, view, model) => stream =>
-                {
-                    var result = new RazorViewEngine(new AspNetTemplateLocator()).RenderView(path + view + ".cshtml", model);
-                    result.Execute(stream);
-                };
-            }
+                var result = new RazorViewEngine(new AspNetTemplateLocator()).RenderView(path + view + ".cshtml", model);
+                result.Execute(stream);
+            };
+
+            DateFormat = date => string.Format("{0:MMMM} {1} {0:yyyy}", date, date.Day.ToOrdinal());
+            ArticleExtension = ".md";
         }
 
-        public virtual Func<DateTime, string> DateFormat
-        {
-            get { return dateTime => dateTime.ToShortDateString(); }
-        }
+        public Func<string, string, dynamic, Action<Stream>> ToHtml { get; set; }
 
-        public virtual string Author
-        {
-            get { return "f"; }
-        }
+        public Func<DateTime, string> DateFormat { get; set; }
 
-        public virtual string Title
-        {
-            get { return ""; }
-        }
+        public string Author { get; set; }
 
-        public virtual string Url
-        {
-            get { return ""; }
-        }
+        public string Title { get; set; }
 
-        public virtual string Prefix
-        {
-            get { return ""; }
-        }
+        public string Url { get; set; }
 
-        public virtual string Disqus
-        {
-            get { return ""; }
-        }
+        public string Prefix { get; set; }
 
-        public virtual string ArticleExtension
-        {
-            get { return ".md"; }
-        }
+        public string Disqus { get; set; }
 
+        public string ArticleExtension { get; set; }
     }
 }

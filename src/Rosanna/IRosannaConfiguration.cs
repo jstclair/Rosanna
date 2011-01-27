@@ -5,13 +5,13 @@ namespace Rosanna
 {
     public interface IRosannaConfiguration
     {
-        Func<string, string, dynamic, Action<Stream>> ToHtml { get; }
-        Func<DateTime, string> DateFormat { get; }
-        string Author { get; }
-        string Title { get; }
-        string Url { get; }
-        string Prefix { get; }
-        string Disqus { get; }
-        string ArticleExtension { get; }
+        Func<string, string, dynamic, Action<Stream>> ToHtml { get; set; }
+        Func<DateTime, string> DateFormat { get; set; }
+        string Author { get; set; }
+        string Title { get; set; }
+        string Url { get; set; }
+        string Prefix { get; set; }
+        string Disqus { get; set; }
+        string ArticleExtension { get; set; }
     }
 }

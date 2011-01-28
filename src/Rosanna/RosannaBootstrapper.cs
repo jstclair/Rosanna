@@ -5,7 +5,7 @@ using TinyIoC;
 
 namespace Rosanna
 {
-    public class RosannaBootstrapper : DefaultNancyBootStrapper
+    public class RosannaBootstrapper : DefaultNancyBootstrapper
     {
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {

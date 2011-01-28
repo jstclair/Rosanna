@@ -2,8 +2,11 @@
 {
     public class ArticleModel : BaseModel
     {
-        public ArticleModel(IRosannaConfiguration config) : base(config)
+        public Article Article { get; set; }
+
+        public ArticleModel(IRosannaConfiguration config, Article article) : base(config)
         {
+            Article = article;
         }
     }
 }

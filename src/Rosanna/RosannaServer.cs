@@ -5,7 +5,7 @@ namespace Rosanna
 {
     public class RosannaServer : NancyModule
     {
-        public RosannaServer(IRosannaConfiguration config)
+        public RosannaServer(IRosannaConfiguration config, IArticleRepository articleRepository)
             : base(config.Prefix)
         {
             Get["/"] = x =>
@@ -19,8 +19,9 @@ namespace Rosanna
                        };
 
             Get["/{year}/{month}/{day}/{slug}"] = x =>
-                       {
-                           return config.ToHtml("~/views/", "article", new ArticleModel(config));
+                    {
+                        Article article = articleRepository.GetArticle(x.year, x.month, x.day, x.slug);
+                        return config.ToHtml("~/views/", "article", new ArticleModel(config, article));
                        };
 
             Get["/{year}/{month}/{day}"] = x =>

@@ -37,9 +37,6 @@
     <Reference Include="Nancy">
       <HintPath>..\..\lib\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.ViewEngines.NHaml">
-      <HintPath>..\..\lib\Nancy.ViewEngines.NHaml.dll</HintPath>
-    </Reference>
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>..\..\lib\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>

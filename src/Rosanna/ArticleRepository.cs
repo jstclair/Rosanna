@@ -24,15 +24,20 @@ namespace Rosanna
             return new Article(filename, _config);
         }
 
-        public IEnumerable<Article> GetArticles(int year, int month = 0, int day = 0)
+        public IEnumerable<Article> GetArticles(int year = 0, int month = 0, int day = 0)
         {
-            string searchPattern = string.Format("{0}-{1:00}-{2:00}-*{3}", year, month, day, _config.ArticleExtension).Replace("00-", null);
+            string searchPattern = CreateSearchPattern(year, month, day);
 
             var articles = from file in Directory.EnumerateFiles("Articles/", searchPattern, SearchOption.TopDirectoryOnly)
                            orderby file descending
                            select new Article(file, _config);
 
             return articles;
+        }
+
+        private string CreateSearchPattern(int year, int month, int day)
+        {
+            return string.Format("{0}-{1:00}-{2:00}-*{3}", year, month, day, _config.ArticleExtension).Replace("00", "*").Replace("0", "*");
         }
     }
 }

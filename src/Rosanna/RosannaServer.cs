@@ -63,7 +63,9 @@ namespace Rosanna
 
         private Response GetArchiveByYear(int year)
         {
-            return GetArchive(new ArchiveModel(_config, Request.Uri, Enumerable.Empty<Article>()));
+            var articles = _articleRepository.GetArticles(year);
+
+            return GetArchive(new ArchiveModel(_config, Request.Uri, articles));
         }
 
         private Response GetArchive(ArchiveModel archiveModel)

@@ -24,9 +24,9 @@ namespace Rosanna
             return new Article(filename, _config);
         }
 
-        public IEnumerable<Article> GetArticles(int year, int month, int day = 0)
+        public IEnumerable<Article> GetArticles(int year, int month = 0, int day = 0)
         {
-            string searchPattern = string.Format("{0}-{1:00}-{2:00}-*{3}", year, month, day, _config.ArticleExtension).Replace("-00-", null);
+            string searchPattern = string.Format("{0}-{1:00}-{2:00}-*{3}", year, month, day, _config.ArticleExtension).Replace("00-", null);
 
             return Directory.EnumerateFiles("Articles/", searchPattern, SearchOption.TopDirectoryOnly)
                 .Select(file => new Article(file, _config));

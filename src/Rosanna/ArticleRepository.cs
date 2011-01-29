@@ -14,9 +14,9 @@ namespace Rosanna
             _config = config;
         }
 
-        public Article GetArticle(int year, int month, int day, string slug)
+        public Article GetArticle(string year, string month, string day, string slug)
         {
-            string filename = string.Format("Articles/{0}-{1:00}-{2:00}-{3}{4}", year, month, day, slug, _config.ArticleExtension);
+            string filename = Path.Combine("Articles", CreateSearchPattern(year, month, day, slug));
 
             if (!File.Exists(filename))
                 return null;
@@ -24,7 +24,7 @@ namespace Rosanna
             return new Article(filename, _config);
         }
 
-        public IEnumerable<Article> GetArticles(int year = 0, int month = 0, int day = 0)
+        public IEnumerable<Article> GetArticles(string year = "*", string month = "*", string day = "*")
         {
             string searchPattern = CreateSearchPattern(year, month, day);
 
@@ -35,9 +35,9 @@ namespace Rosanna
             return articles;
         }
 
-        private string CreateSearchPattern(int year, int month, int day)
+        private string CreateSearchPattern(string year, string month, string day, string slug = "*")
         {
-            return string.Format("{0}-{1:00}-{2:00}-*{3}", year, month, day, _config.ArticleExtension).Replace("00", "*").Replace("0", "*");
+            return string.Format("{0}-{1}-{2}-{3}{4}", year, month, day, slug, _config.ArticleExtension);
         }
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Rosanna.Tests.Specifications;
 using Rosanna.ViewModels;
 using Xunit;
 
@@ -18,7 +17,7 @@ namespace Rosanna.Tests
         [Fact]
         public void Can_get_article_by_year_month_day_and_slug()
         {
-            Article article = _repository.GetArticle(2010, 08, 05, "new-blog-in-five-minutes");
+            Article article = _repository.GetArticle("2010", "08", "05", "new-blog-in-five-minutes");
 
             article.Title.ShouldEqual("New blog in five minutes");
             article.Slug.ShouldEqual("new-blog-in-five-minutes");
@@ -28,7 +27,7 @@ namespace Rosanna.Tests
         [Fact]
         public void Returns_null_when_requested_article_does_not_exist()
         {
-            Article article = _repository.GetArticle(2010, 08, 05, "i-do-not-exist");
+            Article article = _repository.GetArticle("2010", "08", "05", "i-do-not-exist");
 
             article.ShouldBeNull();
         }
@@ -36,7 +35,7 @@ namespace Rosanna.Tests
         [Fact]
         public void Can_get_articles_by_day()
         {
-            IEnumerable<Article> articles = _repository.GetArticles(2010, 08, 05);
+            IEnumerable<Article> articles = _repository.GetArticles("2010", "08", "05");
 
             articles.ShouldHaveCount(1);
             articles.First().Title.ShouldEqual("New blog in five minutes");
@@ -45,7 +44,7 @@ namespace Rosanna.Tests
         [Fact]
         public void Can_get_articles_by_month()
         {
-            IEnumerable<Article> articles = _repository.GetArticles(2010, 08);
+            IEnumerable<Article> articles = _repository.GetArticles("2010", "08");
 
             articles.ShouldHaveCount(2);
             articles.First().Title.ShouldEqual("New blog in five minutes");
@@ -55,7 +54,7 @@ namespace Rosanna.Tests
         [Fact]
         public void Can_get_articles_by_year()
         {
-            IEnumerable<Article> articles = _repository.GetArticles(2010);
+            IEnumerable<Article> articles = _repository.GetArticles("2010");
 
             articles.ShouldHaveCount(3);
             articles.ElementAt(0).Title.ShouldEqual("New blog in five minutes");

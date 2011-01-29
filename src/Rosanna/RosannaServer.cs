@@ -32,7 +32,7 @@ namespace Rosanna
             return CreateResponse("index", new IndexModel(_config));
         }
 
-        private Response GetArticle(int year, int month, int day, string slug)
+        private Response GetArticle(string year, string month, string day, string slug)
         {
             Article article = _articleRepository.GetArticle(year, month, day, slug);
             if (article == null)
@@ -48,21 +48,21 @@ namespace Rosanna
             return GetArchive(new ArchiveModel(_config, "Archive", articles));
         }
 
-        private Response GetArchiveByDay(int year, int month, int day)
+        private Response GetArchiveByDay(string year, string month, string day)
         {
             var articles = _articleRepository.GetArticles(year, month, day);
 
             return GetArchive(new ArchiveModel(_config, Request.Uri, articles));
         }
 
-        private Response GetArchiveByMonth(int year, int month)
+        private Response GetArchiveByMonth(string year, string month)
         {
             var articles = _articleRepository.GetArticles(year, month);
          
             return GetArchive(new ArchiveModel(_config, Request.Uri, articles));
         }
 
-        private Response GetArchiveByYear(int year)
+        private Response GetArchiveByYear(string year)
         {
             var articles = _articleRepository.GetArticles(year);
 

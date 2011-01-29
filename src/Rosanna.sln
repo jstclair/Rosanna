@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosanna.Web", "Rosanna.Web\Rosanna.Web.csproj", "{6A4640B9-0E51-4246-AA32-AA5A77B1D7C7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosanna", "Rosanna\Rosanna.csproj", "{C1A36919-DA14-43D5-BD25-23E21F821B5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosanna.Tests", "Rosanna.Tests\Rosanna.Tests.csproj", "{7DC5C5DA-0E57-49F7-8B78-7FB4867D943C}"
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6A4640B9-0E51-4246-AA32-AA5A77B1D7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A4640B9-0E51-4246-AA32-AA5A77B1D7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A4640B9-0E51-4246-AA32-AA5A77B1D7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A4640B9-0E51-4246-AA32-AA5A77B1D7C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C1A36919-DA14-43D5-BD25-23E21F821B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C1A36919-DA14-43D5-BD25-23E21F821B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1A36919-DA14-43D5-BD25-23E21F821B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU

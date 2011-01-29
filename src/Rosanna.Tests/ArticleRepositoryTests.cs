@@ -22,5 +22,13 @@ namespace Rosanna.Tests
             article.Slug.ShouldEqual("new-blog-in-five-minutes");
             article.Date.ShouldEqual("August 5th 2010");
         }
+
+        [Fact]
+        public void Returns_null_when_requested_article_does_not_exist()
+        {
+            Article article = _repository.GetArticle(2010, 08, 05, "i-do-not-exist");
+
+            article.ShouldBeNull();
+        }
     }
 }

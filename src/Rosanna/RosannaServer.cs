@@ -35,6 +35,8 @@ namespace Rosanna
         private Response GetArticle(int year, int month, int day, string slug)
         {
             Article article = _articleRepository.GetArticle(year, month, day, slug);
+            if (article == null)
+                return new NotFoundResponse();
 
             return CreateResponse("article", new ArticleModel(_config, article));
         }

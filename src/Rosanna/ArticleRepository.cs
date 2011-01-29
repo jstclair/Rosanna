@@ -1,4 +1,5 @@
-﻿using Rosanna.ViewModels;
+﻿using System.IO;
+using Rosanna.ViewModels;
 
 namespace Rosanna
 {
@@ -14,6 +15,9 @@ namespace Rosanna
         public Article GetArticle(int year, int month, int day, string slug)
         {
             string filename = string.Format("Articles/{0}-{1:00}-{2:00}-{3}{4}", year, month, day, slug, _config.ArticleExtension);
+
+            if (!File.Exists(filename))
+                return null;
 
             return new Article(filename, _config);
         }

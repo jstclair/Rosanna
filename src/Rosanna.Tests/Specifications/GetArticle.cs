@@ -34,4 +34,18 @@ namespace Rosanna.Tests.Specifications
             Response.GetStringContentsFromResponse().ShouldContain("<h3>August 5th 2010</h3>");
         }
     }
+    
+    public class GetNonExistingArticle : RosannaSpecification
+    {
+        public GetNonExistingArticle()
+        {
+            NavigateTo("/2010/08/05/i-do-not-exist");
+        }
+
+        [Fact]
+        public void Status_code_is_not_found()
+        {
+            Response.StatusCode.ShouldEqual(HttpStatusCode.NotFound);
+        }
+    }
 }

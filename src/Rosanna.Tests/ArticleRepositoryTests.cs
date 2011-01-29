@@ -41,5 +41,15 @@ namespace Rosanna.Tests
             articles.ShouldHaveCount(1);
             articles.First().Title.ShouldEqual("New blog in five minutes");
         }
+
+        [Fact]
+        public void Can_get_articles_by_month()
+        {
+            IEnumerable<Article> articles = _repository.GetArticles(2010, 08);
+
+            articles.ShouldHaveCount(2);
+            articles.First().Title.ShouldEqual("New blog in five minutes");
+            articles.Last().Title.ShouldEqual("Rosanna");
+        }
     }
 }

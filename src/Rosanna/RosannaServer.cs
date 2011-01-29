@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Nancy;
 using Rosanna.ViewModels;
 
@@ -57,7 +56,9 @@ namespace Rosanna
 
         private Response GetArchiveByMonth(int year, int month)
         {
-            return GetArchive(new ArchiveModel(_config, Request.Uri, Enumerable.Empty<Article>()));
+            var articles = _articleRepository.GetArticles(year, month);
+         
+            return GetArchive(new ArchiveModel(_config, Request.Uri, articles));
         }
 
         private Response GetArchiveByYear(int year)

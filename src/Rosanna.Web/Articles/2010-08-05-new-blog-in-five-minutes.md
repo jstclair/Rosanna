@@ -1,6 +1,5 @@
 --- 
 title: New blog in five minutes
-date: 05/08/2010
 
 As part of learning Ruby I wanted to move my blog to the Ruby platform. I started out by creating one myself using [Ruby on Rails](http://rubyonrails.org/), but then I came across [toto](http://cloudhead.io/toto), "the tiniest blogging engine in Oz", in a [blog post by Mark Nijhof](http://cre8ivethought.com/blog/2010/08/04/blog-moved-once-again/). It looked very promising, and I decided to give it a shot. 
 

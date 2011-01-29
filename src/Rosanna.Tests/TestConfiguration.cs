@@ -1,7 +1,7 @@
 using Nancy.ViewEngines.Razor;
 using Rosanna.Tests.Views;
 
-namespace Rosanna.Tests.Specifications
+namespace Rosanna.Tests
 {
     public class TestConfiguration : RosannaConfiguration
     {

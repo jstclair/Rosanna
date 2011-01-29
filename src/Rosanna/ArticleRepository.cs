@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Rosanna.ViewModels;
 
 namespace Rosanna
@@ -20,6 +23,14 @@ namespace Rosanna
                 return null;
 
             return new Article(filename, _config);
+        }
+
+        public IEnumerable<Article> GetArticles(int year, int month, int day)
+        {
+            string searchPattern = string.Format("{0}-{1:00}-{2:00}-*{3}", year, month, day, _config.ArticleExtension);
+
+            return Directory.EnumerateFiles("Articles/", searchPattern, SearchOption.TopDirectoryOnly)
+                .Select(file => new Article(file, _config));
         }
     }
 }

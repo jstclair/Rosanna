@@ -1,4 +1,6 @@
-﻿using Nancy;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Nancy;
 using Rosanna.ViewModels;
 
 namespace Rosanna
@@ -43,22 +45,24 @@ namespace Rosanna
 
         private Response GetArchive()
         {
-            return GetArchive(new ArchiveModel(_config, "Archive"));
+            return GetArchive(new ArchiveModel(_config, "Archive", Enumerable.Empty<Article>()));
         }
 
         private Response GetArchiveByDay(int year, int month, int day)
         {
-            return GetArchive(new ArchiveModel(_config, Request.Uri));
+            var articles = _articleRepository.GetArticles(year, month, day);
+
+            return GetArchive(new ArchiveModel(_config, Request.Uri, articles));
         }
 
         private Response GetArchiveByMonth(int year, int month)
         {
-            return GetArchive(new ArchiveModel(_config, Request.Uri));
+            return GetArchive(new ArchiveModel(_config, Request.Uri, Enumerable.Empty<Article>()));
         }
 
         private Response GetArchiveByYear(int year)
         {
-            return GetArchive(new ArchiveModel(_config, Request.Uri));
+            return GetArchive(new ArchiveModel(_config, Request.Uri, Enumerable.Empty<Article>()));
         }
 
         private Response GetArchive(ArchiveModel archiveModel)

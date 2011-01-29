@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Rosanna.Tests.Specifications;
 using Rosanna.ViewModels;
 using Xunit;
@@ -29,6 +31,15 @@ namespace Rosanna.Tests
             Article article = _repository.GetArticle(2010, 08, 05, "i-do-not-exist");
 
             article.ShouldBeNull();
+        }
+
+        [Fact]
+        public void Can_get_articles_by_day()
+        {
+            IEnumerable<Article> articles = _repository.GetArticles(2010, 08, 05);
+
+            articles.ShouldHaveCount(1);
+            articles.First().Title.ShouldEqual("New blog in five minutes");
         }
     }
 }

@@ -14,7 +14,7 @@ Albacore.configure do |config|
 end
 
 desc "Compiles solution and runs unit tests"
-task :default => [:clean, :version, :compile, :test, :publish]
+task :default => [:clean, :version, :compile, :test, :publish, :package]
 
 desc "Executes all xUnit tests"
 task :test => [:xunit]

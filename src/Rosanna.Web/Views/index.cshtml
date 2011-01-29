@@ -1,3 +1,7 @@
 ﻿
     <h1>Hello @Model.Author</h1>
-    <p>This is a sample Razor view!</p>
+    @foreach (var article in Model.Articles)
+    {
+        <h2><a href="@article.Path">@article.Title</a></h2>
+        <h3>@article.Date</h3>
+    }

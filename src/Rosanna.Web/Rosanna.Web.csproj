@@ -84,6 +84,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Articles\2009-01-01-toto.md" />
+    <None Include="Articles\2010-07-06-nancy.md" />
+    <None Include="Articles\2010-08-04-rosanna.md" />
     <None Include="Articles\2010-08-05-new-blog-in-five-minutes.md" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

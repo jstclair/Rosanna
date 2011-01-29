@@ -1,5 +1,4 @@
-﻿using Rosanna.Tests.Specifications;
-using Rosanna.ViewModels;
+﻿using Rosanna.ViewModels;
 using Xunit;
 
 namespace Rosanna.Tests
@@ -100,6 +99,20 @@ namespace Rosanna.Tests
         public void Summary_returns_first_150_characters_of_the_body()
         {
             _article.Summary.ShouldEqual(_article.Body.Substring(0, 150));
+        }
+
+        [Fact]
+        public void Author_returns_the_author_from_configuration()
+        {
+            _article.Author.ShouldEqual("Author");
+        }
+
+        [Fact]
+        public void If_author_is_specified_in_atricle_it_overrides_the_one_from_config()
+        {
+            var articleWithAuthorSpecified = new Article("Articles\\2010-08-04-rosanna.md", _config);
+
+            articleWithAuthorSpecified.Author.ShouldEqual("Rosanna");
         }
     }
 }

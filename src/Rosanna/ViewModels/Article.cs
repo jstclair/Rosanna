@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Dynamic;
 using System.IO;
+using System.Linq;
 using MarkdownSharp;
+using Nancy;
 
 namespace Rosanna.ViewModels
 {
@@ -9,7 +12,7 @@ namespace Rosanna.ViewModels
         private readonly IRosannaConfiguration _config;
         private readonly string _fileName;
         private readonly DateTime _date;
-        private readonly dynamic _meta;
+        private readonly DynamicDictionary _meta;
         private readonly string _body;
 
         public Article(string filePath, IRosannaConfiguration config)
@@ -62,6 +65,17 @@ namespace Rosanna.ViewModels
         public dynamic Meta
         {
             get { return _meta; }
+        }
+
+        public string Author
+        {
+            get
+            {
+                if (_meta.GetDynamicMemberNames().Any(x => x == "author"))
+                    return Meta.author;
+
+                return _config.Author;
+            }
         }
     }
 }

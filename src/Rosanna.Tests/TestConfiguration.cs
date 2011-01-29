@@ -14,6 +14,8 @@ namespace Rosanna.Tests
             };
 
             ArticlePath = "Articles/";
+            Url = "http://example.com";
+            Author = "Author";
         }
     }
 }

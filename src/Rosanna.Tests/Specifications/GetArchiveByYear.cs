@@ -43,7 +43,7 @@ namespace Rosanna.Tests.Specifications
         [Fact]
         public void Date_of_second_article_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h3>August 6th 2010</h3>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h3>August 4th 2010</h3>");
         }
 
         [Fact]

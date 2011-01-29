@@ -58,9 +58,9 @@ namespace Rosanna.Tests
             IEnumerable<Article> articles = _repository.GetArticles(2010);
 
             articles.ShouldHaveCount(3);
-            articles.ElementAt(0).Title.ShouldEqual("Nancy");
-            articles.ElementAt(1).Title.ShouldEqual("New blog in five minutes");
-            articles.ElementAt(2).Title.ShouldEqual("Rosanna");
+            articles.ElementAt(0).Title.ShouldEqual("New blog in five minutes");
+            articles.ElementAt(1).Title.ShouldEqual("Rosanna");
+            articles.ElementAt(2).Title.ShouldEqual("Nancy");
         }
     }
 }

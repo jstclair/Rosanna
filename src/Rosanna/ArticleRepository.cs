@@ -28,8 +28,11 @@ namespace Rosanna
         {
             string searchPattern = string.Format("{0}-{1:00}-{2:00}-*{3}", year, month, day, _config.ArticleExtension).Replace("00-", null);
 
-            return Directory.EnumerateFiles("Articles/", searchPattern, SearchOption.TopDirectoryOnly)
-                .Select(file => new Article(file, _config));
+            var articles = from file in Directory.EnumerateFiles("Articles/", searchPattern, SearchOption.TopDirectoryOnly)
+                           orderby file descending
+                           select new Article(file, _config);
+
+            return articles;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Web.Hosting;
 using Nancy.ViewEngines;
 using Nancy.ViewEngines.Razor;
 
@@ -17,6 +18,7 @@ namespace Rosanna
 
             DateFormat = date => string.Format("{0:MMMM} {1} {0:yyyy}", date, date.Day.ToOrdinal());
             ArticleExtension = ".md";
+            ArticlePath = HostingEnvironment.MapPath("~/Articles/");
         }
 
         public Func<string, string, dynamic, Action<Stream>> ToHtml { get; set; }
@@ -34,5 +36,7 @@ namespace Rosanna
         public string Disqus { get; set; }
 
         public string ArticleExtension { get; set; }
+
+        public string ArticlePath { get; set; }
     }
 }

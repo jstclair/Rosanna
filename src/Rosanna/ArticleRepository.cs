@@ -16,7 +16,7 @@ namespace Rosanna
 
         public Article GetArticle(string year, string month, string day, string slug)
         {
-            string filename = Path.Combine("Articles", CreateSearchPattern(year, month, day, slug));
+            string filename = Path.Combine(_config.ArticlePath, CreateSearchPattern(year, month, day, slug));
 
             if (!File.Exists(filename))
                 return null;
@@ -28,7 +28,7 @@ namespace Rosanna
         {
             string searchPattern = CreateSearchPattern(year, month, day);
 
-            var articles = from file in Directory.EnumerateFiles("Articles/", searchPattern, SearchOption.TopDirectoryOnly)
+            var articles = from file in Directory.EnumerateFiles(_config.ArticlePath, searchPattern, SearchOption.TopDirectoryOnly)
                            orderby file descending
                            select new Article(file, _config);
 

@@ -12,6 +12,8 @@ namespace Rosanna.Tests
                 dynamic result = new RazorViewEngine(new ViewLocator()).RenderView(path + view + ".cshtml", model);
                 result.Execute(stream);
             };
+
+            ArticlePath = "Articles/";
         }
     }
 }

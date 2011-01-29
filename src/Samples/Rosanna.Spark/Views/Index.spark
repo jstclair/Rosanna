@@ -1,0 +1,8 @@
+<viewdata model="Rosanna.ViewModels.IndexModel"/>
+<h1>${Model.Title}</h1>
+
+<var i="0" />
+<for each="var article in Model.Articles" i="i+1">
+    <h3><a href="${article.Path}">${article.Title}</a></h3>
+    <p if="i<3">${article.Summary}</p>
+</for>

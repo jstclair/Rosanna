@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosanna", "Rosanna\Rosanna.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosanna.Tests", "Rosanna.Tests\Rosanna.Tests.csproj", "{7DC5C5DA-0E57-49F7-8B78-7FB4867D943C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D33FFDA8-6882-4066-ABE9-FFE1512CE096}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosanna.Spark", "Samples\Rosanna.Spark\Rosanna.Spark.csproj", "{C3748CA7-1E4E-4A04-9BC9-AB6DFD41905D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,8 +29,15 @@ Global
 		{7DC5C5DA-0E57-49F7-8B78-7FB4867D943C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DC5C5DA-0E57-49F7-8B78-7FB4867D943C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DC5C5DA-0E57-49F7-8B78-7FB4867D943C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3748CA7-1E4E-4A04-9BC9-AB6DFD41905D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3748CA7-1E4E-4A04-9BC9-AB6DFD41905D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3748CA7-1E4E-4A04-9BC9-AB6DFD41905D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3748CA7-1E4E-4A04-9BC9-AB6DFD41905D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C3748CA7-1E4E-4A04-9BC9-AB6DFD41905D} = {D33FFDA8-6882-4066-ABE9-FFE1512CE096}
 	EndGlobalSection
 EndGlobal

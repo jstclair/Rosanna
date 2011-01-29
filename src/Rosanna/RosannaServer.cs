@@ -29,7 +29,9 @@ namespace Rosanna
 
         private Response GetIndex()
         {
-            return CreateResponse("index", new IndexModel(_config));
+            var articles = _articleRepository.GetArticles();
+
+            return CreateResponse("index", new IndexModel(_config, articles));
         }
 
         private Response GetArticle(string year, string month, string day, string slug)

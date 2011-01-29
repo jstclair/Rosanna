@@ -5,40 +5,68 @@ namespace Rosanna
 {
     public class RosannaServer : NancyModule
     {
+        private readonly IRosannaConfiguration _config;
+        private readonly IArticleRepository _articleRepository;
+
         public RosannaServer(IRosannaConfiguration config, IArticleRepository articleRepository)
             : base(config.Prefix)
         {
-            Get["/"] = x =>
-                       {
-                           return config.ToHtml("~/views/", "index", new IndexModel(config));
-                       };
+            _config = config;
+            _articleRepository = articleRepository;
 
-            Get["/archive"] = x =>
-                       {
-                           return config.ToHtml("~/views/", "archive", new ArchiveModel(config, "Archive"));
-                       };
+            DefineRoutes();
+        }
 
-            Get["/{year}/{month}/{day}/{slug}"] = x =>
-                    {
-                        Article article = articleRepository.GetArticle(x.year, x.month, x.day, x.slug);
-                        return config.ToHtml("~/views/", "article", new ArticleModel(config, article));
-                       };
+        private void DefineRoutes()
+        {
+            Get["/"] = x => GetIndex();
+            Get["/archive"] = x => GetArchive();
+            Get["/{year}/{month}/{day}/{slug}"] = x => GetArticle(x.year, x.month, x.day, x.slug);
+            Get["/{year}/{month}/{day}"] = x => GetArchiveByDay(x.year, x.month, x.day);
+            Get["/{year}/{month}"] = x => GetArchiveByMonth(x.year, x.month);
+            Get["/{year}"] = x => GetArchiveByYear(x.year);
+        }
 
-            Get["/{year}/{month}/{day}"] = x =>
-                       {
-                           return config.ToHtml("~/views/", "archive", new ArchiveModel(config, Request.Uri));
-                       };
+        private Response GetIndex()
+        {
+            return CreateResponse("index", new IndexModel(_config));
+        }
 
-            Get["/{year}/{month}"] = x =>
-                       {
-                           return config.ToHtml("~/views/", "archive", new ArchiveModel(config, Request.Uri));
-                       };
+        private Response GetArticle(int year, int month, int day, string slug)
+        {
+            Article article = _articleRepository.GetArticle(year, month, day, slug);
 
-            Get["/{year}"] = x =>
-                       {
-                           return config.ToHtml("~/views/", "archive", new ArchiveModel(config, Request.Uri));
-                       };
+            return CreateResponse("article", new ArticleModel(_config, article));
+        }
 
+        private Response GetArchive()
+        {
+            return GetArchive(new ArchiveModel(_config, "Archive"));
+        }
+
+        private Response GetArchiveByDay(int year, int month, int day)
+        {
+            return GetArchive(new ArchiveModel(_config, Request.Uri));
+        }
+
+        private Response GetArchiveByMonth(int year, int month)
+        {
+            return GetArchive(new ArchiveModel(_config, Request.Uri));
+        }
+
+        private Response GetArchiveByYear(int year)
+        {
+            return GetArchive(new ArchiveModel(_config, Request.Uri));
+        }
+
+        private Response GetArchive(ArchiveModel archiveModel)
+        {
+            return CreateResponse("archive", archiveModel);
+        }
+
+        private Response CreateResponse(string view, dynamic model)
+        {
+            return _config.ToHtml("~/views/", view, model);
         }
     }
 }

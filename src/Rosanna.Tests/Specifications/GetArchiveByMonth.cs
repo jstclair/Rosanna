@@ -3,9 +3,9 @@ using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetArchiveThroughYearAndMonth : RosannaSpecification
+    public class GetArchiveByMonth : RosannaSpecification
     {
-        public GetArchiveThroughYearAndMonth()
+        public GetArchiveByMonth()
         {
             NavigateTo("/2010/08");
         }

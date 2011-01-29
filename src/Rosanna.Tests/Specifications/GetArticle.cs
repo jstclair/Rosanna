@@ -3,9 +3,9 @@ using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetSingleArticle : RosannaSpecification
+    public class GetArticle : RosannaSpecification
     {
-        public GetSingleArticle()
+        public GetArticle()
         {
             NavigateTo("/2010/08/05/new-blog-in-five-minutes");
         }

@@ -57,11 +57,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseExtensions.cs" />
     <Compile Include="ShouldExtensions.cs" />
-    <Compile Include="Specifications\GetArchiveThroughArchive.cs" />
-    <Compile Include="Specifications\GetArchiveThroughYear.cs" />
-    <Compile Include="Specifications\GetArchiveThroughYearAndMonth.cs" />
-    <Compile Include="Specifications\GetArchiveThroughYearMonthAndDay.cs" />
-    <Compile Include="Specifications\GetSingleArticle.cs" />
+    <Compile Include="Specifications\GetArchive.cs" />
+    <Compile Include="Specifications\GetArchiveByYear.cs" />
+    <Compile Include="Specifications\GetArchiveByMonth.cs" />
+    <Compile Include="Specifications\GetArchiveByDay.cs" />
+    <Compile Include="Specifications\GetArticle.cs" />
     <Compile Include="Specifications\GetIndex.cs" />
     <Compile Include="Specifications\RosannaSpecification.cs" />
     <Compile Include="Specifications\TestConfiguration.cs" />

@@ -3,11 +3,11 @@ using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetArchiveThroughYearMonthAndDay : RosannaSpecification
+    public class GetArchive : RosannaSpecification
     {
-        public GetArchiveThroughYearMonthAndDay()
+        public GetArchive()
         {
-            NavigateTo("/2010/08/05");
+            NavigateTo("/archive");
         }
 
         [Fact]
@@ -19,7 +19,7 @@ namespace Rosanna.Tests.Specifications
         [Fact]
         public void Archive_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>2010/08/05</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>Archive</h1>");
         }
     }
 }

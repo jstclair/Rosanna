@@ -19,7 +19,7 @@ namespace Rosanna.Tests.Specifications
         [Fact]
         public void Archive_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>Archive</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>archive</h1>");
         }
 
         [Fact]

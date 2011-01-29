@@ -22,9 +22,9 @@ namespace Rosanna
             Get["/"] = x => GetIndex();
             Get["/archive"] = x => GetArchive();
             Get["/{year}/{month}/{day}/{slug}"] = x => GetArticle(x.year, x.month, x.day, x.slug);
-            Get["/{year}/{month}/{day}"] = x => GetArchiveByDay(x.year, x.month, x.day);
-            Get["/{year}/{month}"] = x => GetArchiveByMonth(x.year, x.month);
-            Get["/{year}"] = x => GetArchiveByYear(x.year);
+            Get["/{year}/{month}/{day}"] = x => GetArchive(x.year, x.month, x.day);
+            Get["/{year}/{month}"] = x => GetArchive(x.year, x.month);
+            Get["/{year}"] = x => GetArchive(x.year);
         }
 
         private Response GetIndex()
@@ -41,37 +41,11 @@ namespace Rosanna
             return CreateResponse("article", new ArticleModel(_config, article));
         }
 
-        private Response GetArchive()
-        {
-            var articles = _articleRepository.GetArticles();
-
-            return GetArchive(new ArchiveModel(_config, "Archive", articles));
-        }
-
-        private Response GetArchiveByDay(string year, string month, string day)
+        private Response GetArchive(string year = "*", string month = "*", string day = "*")
         {
             var articles = _articleRepository.GetArticles(year, month, day);
 
-            return GetArchive(new ArchiveModel(_config, Request.Uri, articles));
-        }
-
-        private Response GetArchiveByMonth(string year, string month)
-        {
-            var articles = _articleRepository.GetArticles(year, month);
-         
-            return GetArchive(new ArchiveModel(_config, Request.Uri, articles));
-        }
-
-        private Response GetArchiveByYear(string year)
-        {
-            var articles = _articleRepository.GetArticles(year);
-
-            return GetArchive(new ArchiveModel(_config, Request.Uri, articles));
-        }
-
-        private Response GetArchive(ArchiveModel archiveModel)
-        {
-            return CreateResponse("archive", archiveModel);
+            return CreateResponse("archive", new ArchiveModel(_config, Request.Uri, articles));
         }
 
         private Response CreateResponse(string view, dynamic model)

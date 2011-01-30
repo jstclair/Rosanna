@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="xunit">
       <HintPath>..\..\lib\xunit.dll</HintPath>
     </Reference>
@@ -55,6 +56,7 @@
     <Compile Include="ArticleRepositoryTests.cs" />
     <Compile Include="ArticleSummaryTests.cs" />
     <Compile Include="ArticleTests.cs" />
+    <Compile Include="FeedBuilderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseExtensions.cs" />
     <Compile Include="ShouldExtensions.cs" />

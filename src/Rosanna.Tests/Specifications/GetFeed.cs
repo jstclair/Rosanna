@@ -28,10 +28,9 @@ namespace Rosanna.Tests.Specifications
             Response.ContentType.ShouldEqual("application/atom+xml");
         }
 
-        [Fact]
+        [Fact(Skip = "Not Done")]
         public void Response_contains_atom_feed()
         {
-            // TODO
             Response.GetStringContentsFromResponse().ShouldEqual("");
         }
     }

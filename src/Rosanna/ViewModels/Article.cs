@@ -28,7 +28,7 @@ namespace Rosanna.ViewModels
 
         public string Path
         {
-            get { return string.Format("/{0}/{1}/{2}/", _config.Prefix, _date.ToString("yyyy/MM/dd"), Slug).Replace("//", "/"); }
+            get { return string.Format("/{0}/{1}/{2}", _config.Prefix, _date.ToString("yyyy/MM/dd"), Slug).Replace("//", "/"); }
         }
         
         public string Permalink
@@ -75,6 +75,11 @@ namespace Rosanna.ViewModels
 
                 return _config.Author;
             }
+        }
+
+        public DateTime GetDate()
+        {
+            return _date;
         }
     }
 }

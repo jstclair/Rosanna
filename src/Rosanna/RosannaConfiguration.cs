@@ -41,5 +41,7 @@ namespace Rosanna
         public string ArticlePath { get; set; }
 
         public string SummaryDelimiter { get; set; }
+
+        public int CacheAge { get; set; }
     }
 }

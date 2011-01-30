@@ -7,6 +7,11 @@ namespace Rosanna
 {
     public class RosannaBootstrapper : DefaultNancyBootstrapper
     {
+        public TinyIoCContainer Container
+        {
+            get { return container; }
+        }
+
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
             base.ConfigureApplicationContainer(container);

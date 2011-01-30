@@ -52,7 +52,18 @@ namespace Rosanna
 
         private Response CreateResponse(string view, dynamic model)
         {
-            return _config.ToHtml("~/views/", view, model);
+            Response response = _config.ToHtml("~/views/", view, model);
+
+            SetCacheControl(response);
+
+            return response;
+        }
+
+        private void SetCacheControl(Response response)
+        {
+            var cache = string.Format("public, max-age={0}", _config.CacheAge);
+            var noCache = "no-cache, must-revalidate";
+            response.Headers.Add("Cache-Control", _config.CacheAge > 0 ? cache : noCache);
         }
     }
 }

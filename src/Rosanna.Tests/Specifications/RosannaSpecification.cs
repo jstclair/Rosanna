@@ -6,10 +6,13 @@ namespace Rosanna.Tests.Specifications
     {
         public static INancyEngine Engine;
         public static Response Response;
+        public static IRosannaConfiguration Config;
 
         public RosannaSpecification()
         {
-            Engine = new RosannaBootstrapper().GetEngine();
+            var bootstrapper = new RosannaBootstrapper();
+            Engine = bootstrapper.GetEngine();
+            Config = bootstrapper.Container.Resolve<IRosannaConfiguration>();
         }
 
         protected void NavigateTo(string route)

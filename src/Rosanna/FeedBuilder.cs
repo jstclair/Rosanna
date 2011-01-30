@@ -6,7 +6,7 @@ using Rosanna.ViewModels;
 
 namespace Rosanna
 {
-    public class FeedBuilder
+    public class FeedBuilder : IFeedBuilder
     {
         private readonly IRosannaConfiguration _config;
 

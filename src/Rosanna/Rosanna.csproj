@@ -56,6 +56,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FeedBuilder.cs" />
     <Compile Include="IArticleRepository.cs" />
+    <Compile Include="IFeedBuilder.cs" />
     <Compile Include="RosannaBootstrapper.cs" />
     <Compile Include="RosannaConfiguration.cs" />
     <Compile Include="IRosannaConfiguration.cs" />

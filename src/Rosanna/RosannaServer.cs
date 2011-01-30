@@ -1,5 +1,4 @@
-﻿using System.ServiceModel.Syndication;
-using Nancy;
+﻿using Nancy;
 using Rosanna.ViewModels;
 
 namespace Rosanna
@@ -8,12 +7,14 @@ namespace Rosanna
     {
         private readonly IRosannaConfiguration _config;
         private readonly IArticleRepository _articleRepository;
+        private readonly IFeedBuilder _feedBuilder;
 
-        public RosannaServer(IRosannaConfiguration config, IArticleRepository articleRepository)
+        public RosannaServer(IRosannaConfiguration config, IArticleRepository articleRepository, IFeedBuilder feedBuilder)
             : base(config.Prefix)
         {
             _config = config;
             _articleRepository = articleRepository;
+            _feedBuilder = feedBuilder;
 
             DefineRoutes();
         }
@@ -31,7 +32,9 @@ namespace Rosanna
 
         private AtomResponse GetFeed()
         {
-            return new AtomResponse(new SyndicationFeed());
+            var feed = _feedBuilder.GetFeed(_articleRepository.GetArticles());
+
+            return new AtomResponse(feed);
         }
 
         private Response GetIndex()

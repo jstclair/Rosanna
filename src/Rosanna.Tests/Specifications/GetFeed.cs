@@ -28,10 +28,10 @@ namespace Rosanna.Tests.Specifications
             Response.ContentType.ShouldEqual("application/atom+xml");
         }
 
-        [Fact(Skip = "Not Done")]
+        [Fact]
         public void Response_contains_atom_feed()
         {
-            Response.GetStringContentsFromResponse().ShouldEqual("");
+            Response.GetStringContentsFromResponse().ShouldContain("<feed xmlns=\"http://www.w3.org/2005/Atom\">");
         }
     }
 }

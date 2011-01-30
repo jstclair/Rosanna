@@ -19,6 +19,7 @@ namespace Rosanna
             DateFormat = date => string.Format("{0:MMMM} {1} {0:yyyy}", date, date.Day.ToOrdinal());
             ArticleExtension = ".md";
             ArticlePath = HostingEnvironment.MapPath("~/Articles/");
+            SummaryDelimiter = "~\n";
         }
 
         public Func<string, string, dynamic, Action<Stream>> ToHtml { get; set; }
@@ -38,5 +39,7 @@ namespace Rosanna
         public string ArticleExtension { get; set; }
 
         public string ArticlePath { get; set; }
+
+        public string SummaryDelimiter { get; set; }
     }
 }

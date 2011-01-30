@@ -62,6 +62,7 @@
     <Compile Include="ViewModels\ArchiveModel.cs" />
     <Compile Include="ViewModels\Article.cs" />
     <Compile Include="ViewModels\ArticleModel.cs" />
+    <Compile Include="ViewModels\ArticleSummary.cs" />
     <Compile Include="ViewModels\BaseModel.cs" />
     <Compile Include="ViewModels\IndexModel.cs" />
   </ItemGroup>

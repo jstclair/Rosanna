@@ -96,9 +96,9 @@ namespace Rosanna.Tests
         }
 
         [Fact]
-        public void Summary_returns_first_150_characters_of_the_body()
+        public void Should_strip_out_the_summary_delimiter_from_the_body()
         {
-            _article.Summary.ShouldEqual(_article.Body.Substring(0, 150));
+            _article.Body.ShouldNotContain(_config.SummaryDelimiter);
         }
 
         [Fact]

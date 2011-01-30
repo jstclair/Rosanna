@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
-using MarkdownSharp;
 using Nancy;
 
 namespace Rosanna.ViewModels
@@ -55,13 +53,14 @@ namespace Rosanna.ViewModels
 
         public string Summary
         {
-            get { return Body.Substring(0, 150); }
+            get { return new ArticleSummary(_body, _config); }
         }
+
         public string Body
         {
-            get { return new Markdown().Transform(_body); }
+            get { return _body.Replace(_config.SummaryDelimiter, null).TransformMarkdown(); }
         }
-        
+
         public dynamic Meta
         {
             get { return _meta; }

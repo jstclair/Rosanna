@@ -14,5 +14,6 @@ namespace Rosanna
         string Disqus { get; set; }
         string ArticleExtension { get; set; }
         string ArticlePath { get; set; }
+        string SummaryDelimiter { get; set; }
     }
 }

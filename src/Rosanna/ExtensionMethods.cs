@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.RegularExpressions;
+using MarkdownSharp;
 using Nancy;
 
 namespace Rosanna
@@ -13,6 +14,11 @@ namespace Rosanna
             string value = Regex.Replace(Regex.Replace(Encoding.ASCII.GetString(bytes), @"\s{2,}|[^\w]", " ", RegexOptions.ECMAScript).Trim(), @"\s+", "-");
 
             return value.ToLowerInvariant();
+        }
+
+        public static string TransformMarkdown(this string text)
+        {
+            return new Markdown().Transform(text);
         }
 
         public static DynamicDictionary ToDynamicDictionary(this string text, char delimiter = ':')

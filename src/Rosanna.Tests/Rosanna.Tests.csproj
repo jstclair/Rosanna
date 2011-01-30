@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleRepositoryTests.cs" />
+    <Compile Include="ArticleSummaryTests.cs" />
     <Compile Include="ArticleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseExtensions.cs" />

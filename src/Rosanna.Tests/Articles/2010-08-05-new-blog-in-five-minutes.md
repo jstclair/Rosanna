@@ -1,7 +1,8 @@
 --- 
 title: New blog in five minutes
 
-As part of learning Ruby I wanted to move my blog to the Ruby platform. I started out by creating one myself using [Ruby on Rails](http://rubyonrails.org/), but then I came across [toto](http://cloudhead.io/toto), "the tiniest blogging engine in Oz", in a [blog post by Mark Nijhof](http://cre8ivethought.com/blog/2010/08/04/blog-moved-once-again/). It looked very promising, and I decided to give it a shot. 
+As part of learning Ruby I wanted to move my blog to the Ruby platform.~
+I started out by creating one myself using [Ruby on Rails](http://rubyonrails.org/), but then I came across [toto](http://cloudhead.io/toto), "the tiniest blogging engine in Oz", in a [blog post by Mark Nijhof](http://cre8ivethought.com/blog/2010/08/04/blog-moved-once-again/). It looked very promising, and I decided to give it a shot. 
 
 This walkthrough assumes that you have installed [Ruby](http://www.ruby-lang.org/en/) and [Git](http://git-scm.com/) and is somewhat familiar with using Git. Oh, and I am using a Mac, but I think it should work just as fine on Windows.
 

@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System.ServiceModel.Syndication;
+using Nancy;
 using Rosanna.ViewModels;
 
 namespace Rosanna
@@ -21,10 +22,16 @@ namespace Rosanna
         {
             Get["/"] = x => GetIndex();
             Get["/archive"] = x => GetArchive();
+            Get["/index.xml"] = x => GetFeed();
             Get["/{year}/{month}/{day}/{slug}"] = x => GetArticle(x.year, x.month, x.day, x.slug);
             Get["/{year}/{month}/{day}"] = x => GetArchive(x.year, x.month, x.day);
             Get["/{year}/{month}"] = x => GetArchive(x.year, x.month);
             Get["/{year}"] = x => GetArchive(x.year);
+        }
+
+        private AtomResponse GetFeed()
+        {
+            return new AtomResponse(new SyndicationFeed());
         }
 
         private Response GetIndex()

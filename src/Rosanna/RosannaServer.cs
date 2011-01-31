@@ -61,7 +61,7 @@ namespace Rosanna
 
             var articles = _articleRepository.GetArticles(year, month, day);
 
-            return CreateResponse("archive", new ArchiveModel(_config, Request.Uri, articles));
+            return CreateResponse("archive", new ArchiveModel(_config, year, month, day, articles));
         }
 
         private Response CreateResponse(string view, dynamic model)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Rosanna.ViewModels
 {
@@ -7,11 +8,19 @@ namespace Rosanna.ViewModels
         public IEnumerable<Article> Articles { get; set; }
         public string Path { get; set; }
 
-        public ArchiveModel(IRosannaConfiguration config, string path, IEnumerable<Article> articles) 
+        public ArchiveModel(IRosannaConfiguration config, string year, string month, string day, IEnumerable<Article> articles) 
             : base(config)
         {
             Articles = articles;
-            Path = path.TrimStart('/').TrimEnd('/');
+            Path = GetPath(year, month, day);
+        }
+
+        private string GetPath(string year, string month, string day)
+        {
+            if (year == "*" && month == "*" && day == "*")
+                return "Archive";
+
+            return string.Format("{0}/{1}/{2}", year, month, day).TrimEnd("/*".ToCharArray());
         }
     }
 }

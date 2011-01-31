@@ -13,8 +13,9 @@ namespace Rosanna.Tests
                 result.Execute(stream);
             };
 
-            ArticlePath = "Web/Articles/";
             Url = "http://example.com";
+            Prefix = "web";
+            ArticlePath = "Articles/";
             Author = "Author";
         }
     }

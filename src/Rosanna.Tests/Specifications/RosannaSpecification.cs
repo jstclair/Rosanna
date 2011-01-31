@@ -17,6 +17,7 @@ namespace Rosanna.Tests.Specifications
 
         protected void NavigateTo(string route)
         {
+            route = "/" + Config.Prefix + route;
             Response = Engine.HandleRequest(new Request("GET", route, "http"));
         }
     }

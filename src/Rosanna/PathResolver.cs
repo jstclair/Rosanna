@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Web.Hosting;
 
@@ -20,7 +19,7 @@ namespace Rosanna
             if (HostingEnvironment.IsHosted)
                 return HostingEnvironment.MapPath("~/" + path);
 
-            return path;
+            return path + "\\";
         }
 
         public string GetVirtualPath(string virtualPath)
@@ -30,7 +29,7 @@ namespace Rosanna
             if(HostingEnvironment.IsHosted)
                 return "~/" + path;
 
-            return path;
+            return path + "\\";
         }
 
         private string GetPath(string virtualPath)
@@ -38,7 +37,7 @@ namespace Rosanna
             if (virtualPath.StartsWith("~"))
                 virtualPath = virtualPath.Substring(1);
 
-            return Path.Combine(_config.Prefix ?? "", virtualPath) + "/";
+            return Path.Combine(_config.Prefix ?? "", virtualPath);
         }
     }
 }

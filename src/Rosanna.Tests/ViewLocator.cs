@@ -1,8 +1,7 @@
-using System;
 using System.IO;
 using Nancy.ViewEngines;
 
-namespace Rosanna.Tests.Views
+namespace Rosanna.Tests
 {
     public class ViewLocator : IViewLocator
     {

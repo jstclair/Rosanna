@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Scripts\Application.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

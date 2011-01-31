@@ -21,6 +21,7 @@ namespace Rosanna
             _pathResolver = pathResolver;
 
             DefineRoutes();
+            DefineStaticContentRoutes();
         }
 
         private void DefineRoutes()
@@ -32,6 +33,14 @@ namespace Rosanna
             Get["/{year}/{month}/{day}"] = x => GetArchive(x.year, x.month, x.day);
             Get["/{year}/{month}"] = x => GetArchive(x.year, x.month);
             Get["/{year}"] = x => GetArchive(x.year);
+        }
+
+        private void DefineStaticContentRoutes()
+        {
+            foreach (var path in _config.StaticContent)
+            {
+                Get[path + "/{filename}"] = x => new StaticFileResponse(Request.Uri);
+            }
         }
 
         private AtomResponse GetFeed()

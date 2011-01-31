@@ -15,5 +15,6 @@ namespace Rosanna
         string ArticleExtension { get; set; }
         string SummaryDelimiter { get; set; }
         int CacheAge { get; set; }
+        string[] StaticContent { get; set; }
     }
 }

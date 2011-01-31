@@ -68,6 +68,7 @@
     <Compile Include="Specifications\GetArticle.cs" />
     <Compile Include="Specifications\GetFeed.cs" />
     <Compile Include="Specifications\GetIndex.cs" />
+    <Compile Include="Specifications\GetStaticContent.cs" />
     <Compile Include="Specifications\GetUnknownRoute.cs" />
     <Compile Include="Specifications\RosannaSpecification.cs" />
     <Compile Include="TestConfiguration.cs" />
@@ -79,6 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Web\Scripts\Application.js" />
+    <Content Include="Web\Styles\Application.css" />
     <Content Include="Web\Views\index.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -12,7 +12,7 @@ namespace Rosanna.Tests
         {
             _config = new TestConfiguration();
 
-            _article = new Article("Articles\\2010-08-05-new-blog-in-five-minutes.md", _config);
+            _article = new Article("Web\\Articles\\2010-08-05-new-blog-in-five-minutes.md", _config);
         }
 
         [Fact]
@@ -110,7 +110,7 @@ namespace Rosanna.Tests
         [Fact]
         public void If_author_is_specified_in_atricle_it_overrides_the_one_from_config()
         {
-            var articleWithAuthorSpecified = new Article("Articles\\2010-08-04-rosanna.md", _config);
+            var articleWithAuthorSpecified = new Article("Web\\Articles\\2010-08-04-rosanna.md", _config);
 
             articleWithAuthorSpecified.Author.ShouldEqual("Rosanna");
         }

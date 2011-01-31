@@ -13,7 +13,7 @@ namespace Rosanna.Tests
                 result.Execute(stream);
             };
 
-            ArticlePath = "Articles/";
+            ArticlePath = "Web/Articles/";
             Url = "http://example.com";
             Author = "Author";
         }

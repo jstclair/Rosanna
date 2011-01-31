@@ -9,7 +9,7 @@ namespace Rosanna.Tests.Views
         public ViewLocationResult GetTemplateContents(string viewTemplate)
         {
             string fileName = Path.GetFileName(viewTemplate);
-            var path = "Views\\" + fileName;
+            var path = "Web/Views/" + fileName;
 
             return new ViewLocationResult(path, new StreamReader(path));
         }

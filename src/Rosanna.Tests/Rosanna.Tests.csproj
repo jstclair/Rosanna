@@ -71,7 +71,7 @@
     <Compile Include="Specifications\GetUnknownRoute.cs" />
     <Compile Include="Specifications\RosannaSpecification.cs" />
     <Compile Include="TestConfiguration.cs" />
-    <Compile Include="Views\ViewLocator.cs" />
+    <Compile Include="Web\Views\ViewLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rosanna\Rosanna.csproj">
@@ -80,28 +80,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\index.cshtml">
+    <Content Include="Web\Views\index.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Articles\2010-08-05-new-blog-in-five-minutes.md">
+    <None Include="Web\Articles\2010-08-05-new-blog-in-five-minutes.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Views\article.cshtml">
+    <Content Include="Web\Views\article.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\archive.cshtml">
+    <Content Include="Web\Views\archive.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Articles\2010-08-04-rosanna.md">
+    <None Include="Web\Articles\2010-08-04-rosanna.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Articles\2010-07-06-nancy.md">
+    <None Include="Web\Articles\2010-07-06-nancy.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Articles\2009-01-01-toto.md">
+    <None Include="Web\Articles\2009-01-01-toto.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

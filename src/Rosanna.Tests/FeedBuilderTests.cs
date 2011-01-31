@@ -20,7 +20,7 @@ namespace Rosanna.Tests
             _config.Url = "http://example.com";
             _config.Author = "Author";
 
-            _feed = _builder.GetFeed(new ArticleRepository(_config).GetArticles());
+            _feed = _builder.GetFeed(new ArticleRepository(_config, new PathResolver(_config)).GetArticles());
         }
 
         [Fact]

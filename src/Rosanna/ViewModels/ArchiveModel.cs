@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Rosanna.ViewModels
 {
@@ -15,7 +14,7 @@ namespace Rosanna.ViewModels
             Path = GetPath(year, month, day);
         }
 
-        private string GetPath(string year, string month, string day)
+        private static string GetPath(string year, string month, string day)
         {
             if (year == "*" && month == "*" && day == "*")
                 return "Archive";

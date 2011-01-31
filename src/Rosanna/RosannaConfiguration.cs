@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Web.Hosting;
-using Nancy.ViewEngines;
 using Nancy.ViewEngines.Razor;
 
 namespace Rosanna
@@ -12,13 +10,12 @@ namespace Rosanna
         {
             ToHtml = (path, view, model) => stream =>
             {
-                var result = new RazorViewEngine(new AspNetTemplateLocator()).RenderView(path + view + ".cshtml", model);
+                var result = new RazorViewEngine().RenderView(path + view + ".cshtml", model);
                 result.Execute(stream);
             };
 
             DateFormat = date => string.Format("{0:MMMM} {1} {0:yyyy}", date, date.Day.ToOrdinal());
             ArticleExtension = ".md";
-            ArticlePath = HostingEnvironment.MapPath("~/Articles/");
             SummaryDelimiter = "~\n";
         }
 
@@ -37,8 +34,6 @@ namespace Rosanna
         public string Disqus { get; set; }
 
         public string ArticleExtension { get; set; }
-
-        public string ArticlePath { get; set; }
 
         public string SummaryDelimiter { get; set; }
 

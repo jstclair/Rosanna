@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.IO;
+using System.Text.RegularExpressions;
 using Nancy;
 using Rosanna.ViewModels;
 
@@ -9,13 +10,15 @@ namespace Rosanna
         private readonly IRosannaConfiguration _config;
         private readonly IArticleRepository _articleRepository;
         private readonly IFeedBuilder _feedBuilder;
+        private readonly IPathResolver _pathResolver;
 
-        public RosannaServer(IRosannaConfiguration config, IArticleRepository articleRepository, IFeedBuilder feedBuilder)
+        public RosannaServer(IRosannaConfiguration config, IArticleRepository articleRepository, IFeedBuilder feedBuilder, IPathResolver pathResolver)
             : base(config.Prefix)
         {
             _config = config;
             _articleRepository = articleRepository;
             _feedBuilder = feedBuilder;
+            _pathResolver = pathResolver;
 
             DefineRoutes();
         }
@@ -66,7 +69,7 @@ namespace Rosanna
 
         private Response CreateResponse(string view, dynamic model)
         {
-            Response response = _config.ToHtml("~/views/", view, model);
+            Response response = _config.ToHtml(_pathResolver.GetVirtualPath("Views"), view, model);
 
             SetCacheControl(response);
 

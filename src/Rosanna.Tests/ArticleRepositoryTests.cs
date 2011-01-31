@@ -11,7 +11,8 @@ namespace Rosanna.Tests
        
         public ArticleRepositoryTests()
         {
-            _repository = new ArticleRepository(new TestConfiguration());
+            var config = new TestConfiguration();
+            _repository = new ArticleRepository(config, new PathResolver(config));
         }
 
         [Fact]

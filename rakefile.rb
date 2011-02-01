@@ -33,6 +33,7 @@ assemblyinfo :version => [:clean] do |asm|
 	asm.description = "The tiniest blogging engine in .NET! (A port of toto)"
 	asm.copyright = "Copyright (C) Thomas Pedersen"
 	asm.output_file = ASSEMBLY_INFO
+	asm.com_visible = false
 end
 
 desc "Compile solution file"

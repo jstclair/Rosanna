@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Nancy;
 using Rosanna.ViewModels;
 
@@ -39,7 +38,8 @@ namespace Rosanna
         {
             foreach (var path in _config.StaticContent)
             {
-                Get[path + "/{filename}"] = x => new StaticFileResponse(Request.Uri);
+                string path1 = path;
+                Get[path + "/{filename}"] = x => new StaticFileResponse(_pathResolver.GetMappedPath(path1 + "/" + x.filename));
             }
         }
 

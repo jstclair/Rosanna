@@ -1,19 +1,12 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Web.Hosting;
 using Nancy;
 
 namespace Rosanna
 {
     public class StaticFileResponse : Response
         {
-            public static string GetFilePath(string filePath)
-            {
-                return HostingEnvironment.IsHosted ?
-                    HostingEnvironment.MapPath(filePath) : filePath;
-            }
-
             public StaticFileResponse(string filePath)
             {
                 InitializeGenericFileResonse(filePath, "application/octet-stream");
@@ -27,7 +20,7 @@ namespace Rosanna
             private void InitializeGenericFileResonse(string filePath, string contentType)
             {
                 if (string.IsNullOrEmpty(filePath) ||
-                    !File.Exists(GetFilePath(filePath)) ||
+                    !File.Exists(filePath) ||
                     !Path.HasExtension(filePath))
                 {
                     this.StatusCode = HttpStatusCode.NotFound;
@@ -44,7 +37,7 @@ namespace Rosanna
             {
                 return stream =>
                 {
-                    using (var file = File.OpenRead(GetFilePath(filePath)))
+                    using (var file = File.OpenRead(filePath))
                     {
                         var buffer = new byte[4096];
                         var read = 0;

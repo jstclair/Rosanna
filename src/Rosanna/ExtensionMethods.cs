@@ -21,6 +21,12 @@ namespace Rosanna
             return new Markdown().Transform(text);
         }
 
+        public static string Squeeze(this string s, string replacement)
+        {
+            string pattern = Regex.Escape(replacement) + "{2,}";
+            return Regex.Replace(s, pattern, replacement);
+        }
+
         public static DynamicDictionary ToDynamicDictionary(this string text, char delimiter = ':')
         {
             var dictionary = new DynamicDictionary();

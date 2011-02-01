@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using Nancy;
 
-namespace Rosanna
+namespace Rosanna.Formatters
 {
     public class StaticFileResponse : Response
         {

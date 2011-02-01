@@ -1,4 +1,5 @@
 using System.Net;
+using Rosanna.Formatters;
 using Xunit;
 
 namespace Rosanna.Tests.Specifications

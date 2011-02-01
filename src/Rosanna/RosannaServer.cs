@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Nancy;
+using Rosanna.Formatters;
 using Rosanna.ViewModels;
 
 namespace Rosanna

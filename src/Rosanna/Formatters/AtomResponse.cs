@@ -6,7 +6,7 @@ using System.Text;
 using System.Xml;
 using Nancy;
 
-namespace Rosanna
+namespace Rosanna.Formatters
 {
     public class AtomResponse : Response
     {

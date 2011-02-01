@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
-    <Compile Include="AtomResponse.cs" />
+    <Compile Include="Formatters\AtomResponse.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FeedBuilder.cs" />
     <Compile Include="IArticleRepository.cs" />
@@ -65,7 +65,7 @@
     <Compile Include="RosannaHttpRequestHandler.cs" />
     <Compile Include="RosannaServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaticFileResponse.cs" />
+    <Compile Include="Formatters\StaticFileResponse.cs" />
     <Compile Include="ViewModels\ArchiveModel.cs" />
     <Compile Include="ViewModels\Article.cs" />
     <Compile Include="ViewModels\ArticleModel.cs" />

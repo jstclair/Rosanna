@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Rosanna.Tests
 {
-    public class ArticleWithDelimiter
+    public class ArticleSummaryTests
     {
         [Fact]
         public void Summary_is_specified_by_delimiter()

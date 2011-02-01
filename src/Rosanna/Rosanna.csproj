@@ -55,6 +55,7 @@
     <Compile Include="Formatters\AtomResponse.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FeedBuilder.cs" />
+    <Compile Include="Formatters\MimeTypes.cs" />
     <Compile Include="IArticleRepository.cs" />
     <Compile Include="IFeedBuilder.cs" />
     <Compile Include="IPathResolver.cs" />

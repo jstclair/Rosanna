@@ -6,50 +6,54 @@ using Nancy;
 namespace Rosanna.Formatters
 {
     public class StaticFileResponse : Response
+    {
+        public StaticFileResponse(string filePath)
         {
-            public StaticFileResponse(string filePath)
-            {
-                InitializeGenericFileResonse(filePath, "application/octet-stream");
-            }
+            var extension = Path.GetExtension(filePath);
+            InitializeGenericFileResonse(filePath, MimeTypes.FromExtension(extension));
+        }
 
-            public StaticFileResponse(string filePath, string contentType)
-            {
-                InitializeGenericFileResonse(filePath, contentType);
-            }
+        public StaticFileResponse(string filePath, string contentType)
+        {
+            InitializeGenericFileResonse(filePath, contentType);
+        }
 
-            private void InitializeGenericFileResonse(string filePath, string contentType)
+        private void InitializeGenericFileResonse(string filePath, string contentType)
+        {
+            if (FileExists(filePath))
             {
-                if (string.IsNullOrEmpty(filePath) ||
-                    !File.Exists(filePath) ||
-                    !Path.HasExtension(filePath))
-                {
-                    this.StatusCode = HttpStatusCode.NotFound;
-                }
-                else
-                {
-                    this.Contents = GetFileContent(filePath);
-                    this.ContentType = contentType;
-                    this.StatusCode = HttpStatusCode.OK;
-                }
+                Contents = GetFileContent(filePath);
+                ContentType = contentType;
+                StatusCode = HttpStatusCode.OK;
             }
-
-            private static Action<Stream> GetFileContent(string filePath)
+            else
             {
-                return stream =>
-                {
-                    using (var file = File.OpenRead(filePath))
-                    {
-                        var buffer = new byte[4096];
-                        var read = 0;
-                        while (read <= file.Length)
-                        {
-                            file.Read(buffer, 0, buffer.Length);
-                            stream.Write(buffer, 0, buffer.Length);
-                            read += buffer.Length;
-                        }
-                    }
-                };
+                StatusCode = HttpStatusCode.NotFound;
             }
         }
+
+        private static Action<Stream> GetFileContent(string filePath)
+        {
+            return stream =>
+            {
+                using (var file = File.OpenRead(filePath))
+                {
+                    var buffer = new byte[4096];
+                    var read = 0;
+                    while (read <= file.Length)
+                    {
+                        file.Read(buffer, 0, buffer.Length);
+                        stream.Write(buffer, 0, buffer.Length);
+                        read += buffer.Length;
+                    }
+                }
+            };
+        }
+
+        private static bool FileExists(string filePath)
+        {
+            return (!string.IsNullOrEmpty(filePath) && File.Exists(filePath)) && Path.HasExtension(filePath);
+        }
+    }
 
 }

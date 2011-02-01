@@ -28,12 +28,12 @@ namespace Rosanna.ViewModels
 
         public string Path
         {
-            get { return string.Format("/{0}/{1}/{2}", _config.Prefix, _date.ToString("yyyy/MM/dd"), Slug).Replace("//", "/"); }
+            get { return string.Format("/{0}/{1}/{2}", _config.Prefix, _date.ToString("yyyy/MM/dd"), Slug).Squeeze("/"); }
         }
         
         public string Permalink
         {
-            get { return "http://" + string.Format("{0}{1}", _config.Url.Replace("http://", null), Path).Replace("//", "/"); }
+            get { return "http://" + string.Format("{0}{1}", _config.Url.Replace("http://", null), Path).Squeeze("/"); }
         }
         
         public string Slug

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Rosanna.ViewModels;
@@ -35,6 +36,11 @@ namespace Rosanna
                            select new Article(file, _config);
 
             return articles;
+        }
+
+        public IEnumerable<Article> GetArticlesByMeta(string key, string value)
+        {
+            return GetArticles().Where(article => value.Equals(article.Meta[key], StringComparison.InvariantCultureIgnoreCase));
         }
 
         private string CreateSearchPattern(string year, string month, string day, string slug = "*")

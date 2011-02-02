@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Nancy;
 using Rosanna.Formatters;
 using Rosanna.ViewModels;
@@ -69,10 +71,20 @@ namespace Rosanna
 
         private Response GetArchive(string year = "*", string month = "*", string day = "*")
         {
-            if (!ValidateParameters(year, month, day))
-                return NotFound();
+            IEnumerable<Article> articles = Enumerable.Empty<Article>();
 
-            var articles = _articleRepository.GetArticles(year, month, day);
+            if (IsDate(year, month, day))
+            {
+                articles = _articleRepository.GetArticles(year, month, day);
+            }
+            else if(IsMeta(year, month, day))
+            {
+                articles = _articleRepository.GetArticlesByMeta(year, month);                
+            }
+            else
+            {
+                return NotFound();
+            }
 
             return CreateResponse("archive", new ArchiveModel(_config, year, month, day, articles));
         }
@@ -98,9 +110,14 @@ namespace Rosanna
             response.Headers.Add("Cache-Control", _config.CacheAge > 0 ? cache : noCache);
         }
 
-        private static bool ValidateParameters(string year, string month, string day)
+        private static bool IsDate(string year, string month, string day)
         {
             return Regex.IsMatch(year, @"\d{4}|\*") && Regex.IsMatch(month, @"\d{2}|\*") && Regex.IsMatch(day, @"\d{2}|\*");
+        }
+
+        private static bool IsMeta(string year, string month, string day)
+        {
+            return Regex.IsMatch(year, @"[a-zA-Z]+") && Regex.IsMatch(month, @"[a-zA-Z]+") && Regex.IsMatch(day, @"\*");
         }
     }
 }

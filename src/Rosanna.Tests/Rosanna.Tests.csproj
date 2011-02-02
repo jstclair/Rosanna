@@ -68,6 +68,7 @@
     <Compile Include="Specifications\GetArchiveByMonth.cs" />
     <Compile Include="Specifications\GetArchiveByDay.cs" />
     <Compile Include="Specifications\GetArticle.cs" />
+    <Compile Include="Specifications\GetArticlesByMetaData.cs" />
     <Compile Include="Specifications\GetFeed.cs" />
     <Compile Include="Specifications\GetIndex.cs" />
     <Compile Include="Specifications\GetStaticContent.cs" />

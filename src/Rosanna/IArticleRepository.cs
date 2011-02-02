@@ -7,5 +7,6 @@ namespace Rosanna
     {
         Article GetArticle(string year, string month, string day, string slug);
         IEnumerable<Article> GetArticles(string year = "*", string month = "*", string day = "*");
+        IEnumerable<Article> GetArticlesByMeta(string key, string value);
     }
 }

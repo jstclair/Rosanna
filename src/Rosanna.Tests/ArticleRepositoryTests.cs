@@ -74,5 +74,14 @@ namespace Rosanna.Tests
             articles.ElementAt(2).Title.ShouldEqual("Nancy");
             articles.ElementAt(3).Title.ShouldEqual("Toto");
         }
+
+        [Fact]
+        public void Can_get_articles_by_meta_data()
+        {
+            IEnumerable<Article> articles = _repository.GetArticlesByMeta("tags", "Rosanna");
+
+            articles.ShouldHaveCount(1);
+            articles.First().Title.ShouldEqual("Rosanna");
+        }
     }
 }

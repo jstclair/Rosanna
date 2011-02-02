@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using Nancy;
 
 namespace Rosanna.ViewModels
 {
@@ -68,13 +66,7 @@ namespace Rosanna.ViewModels
 
         public string Author
         {
-            get
-            {
-                if (_meta.GetDynamicMemberNames().Any(x => x == "author"))
-                    return Meta.author;
-
-                return _config.Author;
-            }
+            get { return Meta.author ?? _config.Author; }
         }
 
         public DateTime GetDate()

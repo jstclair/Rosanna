@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
+    <Compile Include="DynamicDictionary.cs" />
     <Compile Include="Formatters\AtomResponse.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FeedBuilder.cs" />

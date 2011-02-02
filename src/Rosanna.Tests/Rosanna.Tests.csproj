@@ -56,6 +56,7 @@
     <Compile Include="ArticleRepositoryTests.cs" />
     <Compile Include="ArticleSummaryTests.cs" />
     <Compile Include="ArticleTests.cs" />
+    <Compile Include="DynamicDictionaryTests.cs" />
     <Compile Include="FeedBuilderTests.cs" />
     <Compile Include="PathResolverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

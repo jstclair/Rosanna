@@ -40,7 +40,16 @@ namespace Rosanna
 
         public IEnumerable<Article> GetArticlesByMeta(string key, string value)
         {
-            return GetArticles().Where(article => value.Equals(article.Meta[key], StringComparison.InvariantCultureIgnoreCase));
+            return GetArticles().Where(article => HasMeta(article, key, value));
+        }
+
+        private static bool HasMeta(Article article, string key, string value)
+        {
+            if(article.Meta[key] == null)
+                return false;
+
+            string[] values = ((string)article.Meta[key]).Split(' ');
+            return values.Any(s => s.Equals(value, StringComparison.InvariantCultureIgnoreCase));
         }
 
         private string CreateSearchPattern(string year, string month, string day, string slug = "*")

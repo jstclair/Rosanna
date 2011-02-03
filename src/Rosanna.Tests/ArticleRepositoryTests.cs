@@ -78,7 +78,16 @@ namespace Rosanna.Tests
         [Fact]
         public void Can_get_articles_by_meta_data()
         {
-            IEnumerable<Article> articles = _repository.GetArticlesByMeta("tags", "Rosanna");
+            IEnumerable<Article> articles = _repository.GetArticlesByMeta("tags", "tag");
+
+            articles.ShouldHaveCount(1);
+            articles.First().Title.ShouldEqual("Rosanna");
+        }
+
+        [Fact]
+        public void Can_get_articles_by_meta_data_2()
+        {
+            IEnumerable<Article> articles = _repository.GetArticlesByMeta("author", "Rosanna");
 
             articles.ShouldHaveCount(1);
             articles.First().Title.ShouldEqual("Rosanna");

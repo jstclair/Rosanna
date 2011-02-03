@@ -7,6 +7,13 @@ namespace Rosanna.ViewModels
         public IEnumerable<Article> Articles { get; set; }
         public string Path { get; set; }
 
+        public ArchiveModel(IRosannaConfiguration config, string key, string value, IEnumerable<Article> articles) 
+            : base(config)
+        {
+            Articles = articles;
+            Path = string.Format("{0}: {1}", key, value);
+        }
+
         public ArchiveModel(IRosannaConfiguration config, string year, string month, string day, IEnumerable<Article> articles) 
             : base(config)
         {

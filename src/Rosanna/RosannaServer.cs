@@ -90,7 +90,7 @@ namespace Rosanna
         {
             var articles = _articleRepository.GetArticlesByMeta(key, value);
 
-            return CreateResponse("archive", new ArchiveModel(_config, key, value, "*", articles));
+            return CreateResponse("archive", new ArchiveModel(_config, key, value, articles));
         }
 
         private Response CreateResponse(string view, dynamic model)

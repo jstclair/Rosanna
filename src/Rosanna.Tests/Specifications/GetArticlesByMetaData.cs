@@ -19,7 +19,7 @@ namespace Rosanna.Tests.Specifications
         [Fact]
         public void Archive_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>tags/rosanna</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>tags: rosanna</h1>");
         }
     }
 }

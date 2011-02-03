@@ -34,6 +34,7 @@ namespace Rosanna
 
             Get["/"] = x => GetIndex();
             Get["/archive"] = x => GetArchive();
+            Get["/about"] = x => GetAbout();
             Get["/index.xml"] = x => GetFeed();
             Get["/{year}/{month}/{day}/{slug}"] = x => GetArticle(x.year, x.month, x.day, x.slug);
             Get["/{year}/{month}/{day}", r => Matches(r.Uri, byDay)] = x => GetArchive(x.year, x.month, x.day);
@@ -61,6 +62,11 @@ namespace Rosanna
             var feed = _feedBuilder.GetFeed(_articleRepository.GetArticles());
 
             return new AtomResponse(feed);
+        }
+
+        private Response GetAbout()
+        {
+            return CreateResponse("about", new AboutModel(_config));
         }
 
         private Response GetIndex()

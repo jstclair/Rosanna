@@ -68,6 +68,7 @@
     <Compile Include="RosannaServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Formatters\StaticFileResponse.cs" />
+    <Compile Include="ViewModels\AboutModel.cs" />
     <Compile Include="ViewModels\ArchiveModel.cs" />
     <Compile Include="ViewModels\Article.cs" />
     <Compile Include="ViewModels\ArticleModel.cs" />

@@ -63,6 +63,7 @@
     <Compile Include="ResponseExtensions.cs" />
     <Compile Include="ShouldExtensions.cs" />
     <Compile Include="Specifications\Caching.cs" />
+    <Compile Include="Specifications\GetAbout.cs" />
     <Compile Include="Specifications\GetArchive.cs" />
     <Compile Include="Specifications\GetArchiveByYear.cs" />
     <Compile Include="Specifications\GetArchiveByMonth.cs" />
@@ -113,6 +114,9 @@
     <None Include="Web\Articles\2009-01-01-toto.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Web\Views\about.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

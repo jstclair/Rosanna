@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 using Nancy;
 using Rosanna.Formatters;
@@ -28,13 +27,19 @@ namespace Rosanna
 
         private void DefineRoutes()
         {
+            const string byDay = @".\d{4}/\d{2}/\d{2}/?$";
+            const string byMonth = @".\d{4}/\d{2}/?$";
+            const string byYear = @".\d{4}/?$";
+            const string byMeta = @".[A-Z]/\w+/?$";
+
             Get["/"] = x => GetIndex();
             Get["/archive"] = x => GetArchive();
             Get["/index.xml"] = x => GetFeed();
             Get["/{year}/{month}/{day}/{slug}"] = x => GetArticle(x.year, x.month, x.day, x.slug);
-            Get["/{year}/{month}/{day}"] = x => GetArchive(x.year, x.month, x.day);
-            Get["/{year}/{month}"] = x => GetArchive(x.year, x.month);
-            Get["/{year}"] = x => GetArchive(x.year);
+            Get["/{year}/{month}/{day}", r => Matches(r.Uri, byDay)] = x => GetArchive(x.year, x.month, x.day);
+            Get["/{year}/{month}", r => Matches(r.Uri, byMonth)] = x => GetArchive(x.year, x.month);
+            Get["/{year}", r => Matches(r.Uri, byYear)] = x => GetArchive(x.year);
+            Get["/{key}/{value}", r => Matches(r.Uri, byMeta)] = x => GetArchiveByMeta(x.key, x.value);
         }
 
         private void DefineStaticContentRoutes()
@@ -44,6 +49,11 @@ namespace Rosanna
                 string path1 = path;
                 Get[path + "/{filename}"] = x => new StaticFileResponse(_pathResolver.GetMappedPath(path1 + "/" + x.filename));
             }
+        }
+
+        private static bool Matches(string uri, string pattern)
+        {
+            return Regex.IsMatch(uri, pattern, RegexOptions.IgnoreCase);
         }
 
         private AtomResponse GetFeed()
@@ -64,29 +74,23 @@ namespace Rosanna
         {
             Article article = _articleRepository.GetArticle(year, month, day, slug);
             if (article == null)
-                return NotFound();
+                return new NotFoundResponse();
 
             return CreateResponse("article", new ArticleModel(_config, article));
         }
 
         private Response GetArchive(string year = "*", string month = "*", string day = "*")
         {
-            IEnumerable<Article> articles = Enumerable.Empty<Article>();
-
-            if (IsDate(year, month, day))
-            {
-                articles = _articleRepository.GetArticles(year, month, day);
-            }
-            else if(IsMeta(year, month, day))
-            {
-                articles = _articleRepository.GetArticlesByMeta(year, month);                
-            }
-            else
-            {
-                return NotFound();
-            }
+            IEnumerable<Article> articles = _articleRepository.GetArticles(year, month, day);
 
             return CreateResponse("archive", new ArchiveModel(_config, year, month, day, articles));
+        }
+
+        private Response GetArchiveByMeta(string key, string value)
+        {
+            var articles = _articleRepository.GetArticlesByMeta(key, value);
+
+            return CreateResponse("archive", new ArchiveModel(_config, key, value, "*", articles));
         }
 
         private Response CreateResponse(string view, dynamic model)
@@ -98,26 +102,11 @@ namespace Rosanna
             return response;
         }
 
-        private static NotFoundResponse NotFound()
-        {
-            return new NotFoundResponse();
-        }
-
         private void SetCacheControl(Response response)
         {
             var cache = string.Format("public, max-age={0}", _config.CacheAge);
             var noCache = "no-cache, must-revalidate";
             response.Headers.Add("Cache-Control", _config.CacheAge > 0 ? cache : noCache);
-        }
-
-        private static bool IsDate(string year, string month, string day)
-        {
-            return Regex.IsMatch(year, @"\d{4}|\*") && Regex.IsMatch(month, @"\d{2}|\*") && Regex.IsMatch(day, @"\d{2}|\*");
-        }
-
-        private static bool IsMeta(string year, string month, string day)
-        {
-            return Regex.IsMatch(year, @"[a-zA-Z]+") && Regex.IsMatch(month, @"[a-zA-Z]+") && Regex.IsMatch(day, @"\*");
         }
     }
 }

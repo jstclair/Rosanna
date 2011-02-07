@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Nancy;
 using Rosanna.Formatters;
 using Rosanna.ViewModels;
@@ -27,20 +26,15 @@ namespace Rosanna
 
         private void DefineRoutes()
         {
-            const string byDay = @".\d{4}/\d{2}/\d{2}/?$";
-            const string byMonth = @".\d{4}/\d{2}/?$";
-            const string byYear = @".\d{4}/?$";
-            const string byMeta = @".[A-Z]/\w+/?$";
-
             Get["/"] = x => GetIndex();
             Get["/archive"] = x => GetArchive();
             Get["/about"] = x => GetAbout();
             Get["/index.xml"] = x => GetFeed();
-            Get["/{year}/{month}/{day}/{slug}"] = x => GetArticle(x.year, x.month, x.day, x.slug);
-            Get["/{year}/{month}/{day}", r => Matches(r.Uri, byDay)] = x => GetArchive(x.year, x.month, x.day);
-            Get["/{year}/{month}", r => Matches(r.Uri, byMonth)] = x => GetArchive(x.year, x.month);
-            Get["/{year}", r => Matches(r.Uri, byYear)] = x => GetArchive(x.year);
-            Get["/{key}/{value}", r => Matches(r.Uri, byMeta)] = x => GetArchiveByMeta(x.key, x.value);
+            Get[@"/(?<year>\d{4})/(?<month>\d{2})/(?<day>\d{2})/{slug}"] = x => GetArticle(x.year, x.month, x.day, x.slug);
+            Get[@"/(?<year>\d{4})/(?<month>\d{2})/(?<day>\d{2})"] = x => GetArchive(x.year, x.month, x.day);
+            Get[@"/(?<year>\d{4})/(?<month>\d{2})"] = x => GetArchive(x.year, x.month);
+            Get[@"/(?<year>\d{4})"] = x => GetArchive(x.year);
+            Get[@"/(?<key>[A-Z]+)/(?<value>\w+)"] = x => GetArchiveByMeta(x.key, x.value);
         }
 
         private void DefineStaticContentRoutes()
@@ -50,11 +44,6 @@ namespace Rosanna
                 string path1 = path;
                 Get[path + "/{filename}"] = x => new StaticFileResponse(_pathResolver.GetMappedPath(path1 + "/" + x.filename));
             }
-        }
-
-        private static bool Matches(string uri, string pattern)
-        {
-            return Regex.IsMatch(uri, pattern, RegexOptions.IgnoreCase);
         }
 
         private AtomResponse GetFeed()

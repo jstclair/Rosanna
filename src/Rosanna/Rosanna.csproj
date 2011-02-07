@@ -37,6 +37,9 @@
     <Reference Include="Nancy">
       <HintPath>..\..\lib\Nancy.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.Hosting.Aspnet">
+      <HintPath>..\..\lib\Nancy.Hosting.Aspnet.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>..\..\lib\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>

@@ -1,4 +1,4 @@
-using Nancy.Hosting;
+using Nancy.Hosting.Aspnet;
 
 namespace Rosanna
 {

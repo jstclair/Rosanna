@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Images\404.jpg" />
     <Content Include="Scripts\Application.js" />
+    <Content Include="Styles\Application.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +74,7 @@
     <None Include="Articles\2010-07-06-nancy.md" />
     <None Include="Articles\2010-08-04-rosanna.md" />
     <None Include="Articles\2010-08-05-new-blog-in-five-minutes.md" />
+    <None Include="Views\Shared\Application.spark" />
     <None Include="Views\Archive.spark" />
     <None Include="Views\Article.spark" />
     <None Include="Views\Index.spark" />

@@ -1,5 +1,7 @@
-    <viewdata model="Rosanna.ViewModels.ArticleModel"/>
+<viewdata model="Rosanna.ViewModels.ArticleModel"/>
 
+<content name="Main">
     <h1>${Model.Article.Title}</h1>
     <h3>${Model.Article.Date}</h3>
     <p>${Model.Article.Body}</p>
+</content>

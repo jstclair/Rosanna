@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <script src="Scripts/Application.js" type="text/javascript"></script>
+    <link href="Styles/Application.css" rel="stylesheet" type="text/css" /> 
+    <title>${Model.Title}</title>
+  </head>
+  <body>
+    <use content="Main" />
+  </body>
+</html>

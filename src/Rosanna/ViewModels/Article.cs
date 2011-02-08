@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Nancy;
 
 namespace Rosanna.ViewModels
 {
@@ -66,7 +67,7 @@ namespace Rosanna.ViewModels
 
         public string Author
         {
-            get { return Meta.author ?? _config.Author; }
+            get { return Meta.author.HasValue ? Meta.author : _config.Author; }
         }
 
         public DateTime GetDate()

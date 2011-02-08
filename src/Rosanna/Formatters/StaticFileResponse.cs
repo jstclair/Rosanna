@@ -47,6 +47,14 @@ namespace Rosanna.Formatters
                         read += buffer.Length;
                     }
                 }
+                //using (var reader = new StreamReader(filePath))
+                //{
+                //    using (var writer = new StreamWriter(stream))
+                //    {
+                //        writer.Write(reader.ReadToEnd());
+                //        writer.Flush();
+                //    }
+                //}
             };
         }
 

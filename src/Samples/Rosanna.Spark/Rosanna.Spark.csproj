@@ -78,7 +78,6 @@
     <None Include="Views\Archive.spark" />
     <None Include="Views\Article.spark" />
     <None Include="Views\Index.spark" />
-    <None Include="Views\Layout.spark" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Rosanna\Rosanna.csproj">

@@ -17,7 +17,6 @@ namespace Rosanna.Tests.Specifications
 
             Response.StatusCode.ShouldEqual(HttpStatusCode.OK);
             Response.ContentType.ShouldEqual("application/javascript");
-            Response.GetStringContentsFromResponse().ShouldEqual("alert('Rosanna');");
         }
         
         [Fact]

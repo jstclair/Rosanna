@@ -2,13 +2,13 @@ using Nancy;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class RosannaSpecification
+    public abstract class RosannaSpecification
     {
         public static INancyEngine Engine;
         public static Response Response;
         public static IRosannaConfiguration Config;
 
-        public RosannaSpecification()
+        protected RosannaSpecification()
         {
             var bootstrapper = new RosannaBootstrapper();
             Engine = bootstrapper.GetEngine();

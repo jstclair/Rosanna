@@ -1,13 +1,13 @@
-using System.Net;
+﻿using System.Net;
 using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetArticle : RosannaSpecification
+    public class GetArchiveByDaySpecs : RosannaSpecification
     {
-        public GetArticle()
+        public GetArchiveByDaySpecs()
         {
-            NavigateTo("/2010/08/05/new-blog-in-five-minutes");
+            NavigateTo("/2010/08/05");
         }
 
         [Fact]
@@ -17,9 +17,9 @@ namespace Rosanna.Tests.Specifications
         }
 
         [Fact]
-        public void Article_view_is_rendered()
+        public void Archive_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>Article</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>2010/08/05</h1>");
         }
 
         [Fact]

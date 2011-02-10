@@ -3,7 +3,7 @@ using Xunit.Extensions;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetUnknownRoute : RosannaSpecification
+    public class GetUnknownRouteSpecs : RosannaSpecification
     {
         [Theory]
         [InlineData("/unknown")]

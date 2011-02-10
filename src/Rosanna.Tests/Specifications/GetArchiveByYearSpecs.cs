@@ -3,11 +3,11 @@ using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetIndex : RosannaSpecification
+    public class GetArchiveByYearSpecs : RosannaSpecification
     {
-        public GetIndex()
+        public GetArchiveByYearSpecs()
         {
-            NavigateTo("/");
+            NavigateTo("/2010");
         }
 
         [Fact]
@@ -17,11 +17,11 @@ namespace Rosanna.Tests.Specifications
         }
 
         [Fact]
-        public void Index_view_is_rendered()
+        public void Archive_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>Index</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>2010</h1>");
         }
-
+        
         [Fact]
         public void Title_of_first_article_is_rendered()
         {
@@ -56,18 +56,6 @@ namespace Rosanna.Tests.Specifications
         public void Date_of_third_article_is_rendered()
         {
             Response.GetStringContentsFromResponse().ShouldContain("<h3>July 6th 2010</h3>");
-        }
-
-        [Fact]
-        public void Title_of_forth_article_is_rendered()
-        {
-            Response.GetStringContentsFromResponse().ShouldContain("<h2>Toto</h2>");
-        }
-
-        [Fact]
-        public void Date_of_forth_article_is_rendered()
-        {
-            Response.GetStringContentsFromResponse().ShouldContain("<h3>January 1st 2009</h3>");
         }
     }
 }

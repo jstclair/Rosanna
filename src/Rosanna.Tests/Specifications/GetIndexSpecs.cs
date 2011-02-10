@@ -1,13 +1,13 @@
-﻿using System.Net;
+using System.Net;
 using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetArchive : RosannaSpecification
+    public class GetIndexSpecs : RosannaSpecification
     {
-        public GetArchive()
+        public GetIndexSpecs()
         {
-            NavigateTo("/archive");
+            NavigateTo("/");
         }
 
         [Fact]
@@ -17,9 +17,9 @@ namespace Rosanna.Tests.Specifications
         }
 
         [Fact]
-        public void Archive_view_is_rendered()
+        public void Index_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>Archive</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>Index</h1>");
         }
 
         [Fact]

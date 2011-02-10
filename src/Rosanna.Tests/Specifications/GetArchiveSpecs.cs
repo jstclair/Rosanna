@@ -1,13 +1,13 @@
-using System.Net;
+﻿using System.Net;
 using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetArchiveByYear : RosannaSpecification
+    public class GetArchiveSpecs : RosannaSpecification
     {
-        public GetArchiveByYear()
+        public GetArchiveSpecs()
         {
-            NavigateTo("/2010");
+            NavigateTo("/archive");
         }
 
         [Fact]
@@ -19,9 +19,9 @@ namespace Rosanna.Tests.Specifications
         [Fact]
         public void Archive_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>2010</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>Archive</h1>");
         }
-        
+
         [Fact]
         public void Title_of_first_article_is_rendered()
         {
@@ -56,6 +56,18 @@ namespace Rosanna.Tests.Specifications
         public void Date_of_third_article_is_rendered()
         {
             Response.GetStringContentsFromResponse().ShouldContain("<h3>July 6th 2010</h3>");
+        }
+
+        [Fact]
+        public void Title_of_forth_article_is_rendered()
+        {
+            Response.GetStringContentsFromResponse().ShouldContain("<h2>Toto</h2>");
+        }
+
+        [Fact]
+        public void Date_of_forth_article_is_rendered()
+        {
+            Response.GetStringContentsFromResponse().ShouldContain("<h3>January 1st 2009</h3>");
         }
     }
 }

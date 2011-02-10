@@ -2,7 +2,7 @@ using Xunit.Extensions;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class Caching : RosannaSpecification
+    public class CachingSpecs : RosannaSpecification
     {
         [Theory]
         [InlineData("/", 28800)]

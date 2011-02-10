@@ -3,11 +3,11 @@ using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetAbout : RosannaSpecification
+    public class GetArticlesByMetaDataSpecs : RosannaSpecification
     {
-        public GetAbout()
+        public GetArticlesByMetaDataSpecs()
         {
-            NavigateTo("/about");
+            NavigateTo("/tags/rosanna");
         }
 
         [Fact]
@@ -17,9 +17,9 @@ namespace Rosanna.Tests.Specifications
         }
 
         [Fact]
-        public void Index_view_is_rendered()
+        public void Archive_view_is_rendered()
         {
-            Response.GetStringContentsFromResponse().ShouldContain("<h1>About</h1>");
+            Response.GetStringContentsFromResponse().ShouldContain("<h1>tags: rosanna</h1>");
         }
     }
 }

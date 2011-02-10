@@ -4,9 +4,9 @@ using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetFeed : RosannaSpecification
+    public class GetFeedSpecs : RosannaSpecification
     {
-        public GetFeed()
+        public GetFeedSpecs()
         {
             NavigateTo("/index.xml");
         }

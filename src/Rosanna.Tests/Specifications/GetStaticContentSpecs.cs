@@ -3,9 +3,9 @@ using Xunit;
 
 namespace Rosanna.Tests.Specifications
 {
-    public class GetStaticContent : RosannaSpecification
+    public class GetStaticContentSpecs : RosannaSpecification
     {
-        public GetStaticContent()
+        public GetStaticContentSpecs()
         {
             Config.StaticContent = new[] { "/Scripts", "/Styles" };
         }

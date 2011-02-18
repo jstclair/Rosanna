@@ -90,10 +90,8 @@ namespace Rosanna
 
         private Response CreateResponse(string view, dynamic model)
         {
-            Response response = _config.ToHtml(_pathResolver.GetVirtualPath("Views"), view, model);
-
+            Response response = View[view, model];
             SetCacheControl(response);
-
             return response;
         }
 

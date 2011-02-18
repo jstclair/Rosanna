@@ -1,11 +1,9 @@
 using System;
-using System.IO;
 
 namespace Rosanna
 {
     public interface IRosannaConfiguration
     {
-        Func<string, string, dynamic, Action<Stream>> ToHtml { get; set; }
         Func<DateTime, string> DateFormat { get; set; }
         string Author { get; set; }
         string Title { get; set; }

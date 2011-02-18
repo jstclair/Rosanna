@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using Nancy.ViewEngines.Razor;
 
 namespace Rosanna
 {
@@ -8,19 +6,11 @@ namespace Rosanna
     {
         public RosannaConfiguration()
         {
-            ToHtml = (path, view, model) => stream =>
-            {
-                var result = new RazorViewEngine().RenderView(path + view + ".cshtml", model);
-                result.Execute(stream);
-            };
-
             DateFormat = date => string.Format("{0:MMMM} {1} {0:yyyy}", date, date.Day.ToOrdinal());
             ArticleExtension = ".md";
             SummaryDelimiter = "~\n";
             StaticContent = new[] {"/Scripts", "/Styles", "/Images"};
         }
-
-        public Func<string, string, dynamic, Action<Stream>> ToHtml { get; set; }
 
         public Func<DateTime, string> DateFormat { get; set; }
 

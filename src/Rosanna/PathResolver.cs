@@ -21,16 +21,6 @@ namespace Rosanna
             return AppendTrailingSlash(path);
         }
 
-        public string GetVirtualPath(string virtualPath)
-        {
-            string path = GetPath(virtualPath);
-
-            if(HostingEnvironment.IsHosted)
-                path = "~/" + path;
-            
-            return AppendTrailingSlash(path);
-        }
-
         private string GetPath(string virtualPath)
         {
             if (virtualPath.StartsWith("~"))

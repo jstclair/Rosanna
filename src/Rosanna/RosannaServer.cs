@@ -55,14 +55,14 @@ namespace Rosanna
 
         private Response GetAbout()
         {
-            return CreateResponse("about", new AboutModel(_config));
+            return CreateResponse(new AboutModel(_config));
         }
 
         private Response GetIndex()
         {
             var articles = _articleRepository.GetArticles();
 
-            return CreateResponse("index", new IndexModel(_config, articles));
+            return CreateResponse( new IndexModel(_config, articles));
         }
 
         private Response GetArticle(string year, string month, string day, string slug)
@@ -71,26 +71,26 @@ namespace Rosanna
             if (article == null)
                 return new NotFoundResponse();
 
-            return CreateResponse("article", new ArticleModel(_config, article));
+            return CreateResponse(new ArticleModel(_config, article));
         }
 
         private Response GetArchive(string year = "*", string month = "*", string day = "*")
         {
             IEnumerable<Article> articles = _articleRepository.GetArticles(year, month, day);
 
-            return CreateResponse("archive", new ArchiveModel(_config, year, month, day, articles));
+            return CreateResponse(new ArchiveModel(_config, year, month, day, articles));
         }
 
         private Response GetArchiveByMeta(string key, string value)
         {
             var articles = _articleRepository.GetArticlesByMeta(key, value);
 
-            return CreateResponse("archive", new ArchiveModel(_config, key, value, articles));
+            return CreateResponse(new ArchiveModel(_config, key, value, articles));
         }
 
-        private Response CreateResponse(string view, dynamic model)
+        private Response CreateResponse(dynamic model)
         {
-            Response response = View[view, model];
+            Response response = View[model];
             SetCacheControl(response);
             return response;
         }

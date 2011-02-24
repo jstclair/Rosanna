@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Nancy;
 using Nancy.ViewEngines;
 using Nancy.ViewEngines.Razor;
@@ -17,6 +16,7 @@ namespace Rosanna.Tests.Specifications
         protected RosannaSpecification()
         {
             var bootstrapper = new RosannaBootstrapper();
+            bootstrapper.Initialise();
             Engine = bootstrapper.GetEngine();
             bootstrapper.Container.Register<IViewSourceProvider, FileSystemViewSourceProvider>();
             bootstrapper.Container.Register<IViewEngine, RazorViewEngine>();
@@ -26,7 +26,7 @@ namespace Rosanna.Tests.Specifications
         protected void NavigateTo(string route)
         {
             route = "/" + Config.Prefix + route;
-            Response = Engine.HandleRequest(new Request("GET", route, "http"));
+            Response = Engine.HandleRequest(new Request("GET", route, "http")).Response;
         }
     }
 

@@ -1,4 +1,4 @@
-using System.Net;
+using Nancy;
 using Rosanna.Formatters;
 using Xunit;
 

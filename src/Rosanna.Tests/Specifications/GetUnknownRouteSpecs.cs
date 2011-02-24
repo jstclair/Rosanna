@@ -1,4 +1,4 @@
-using System.Net;
+using Nancy;
 using Xunit.Extensions;
 
 namespace Rosanna.Tests.Specifications

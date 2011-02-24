@@ -22,6 +22,7 @@ namespace Rosanna
 
             DefineRoutes();
             DefineStaticContentRoutes();
+            SetCacheControl();
         }
 
         private void DefineRoutes()
@@ -46,6 +47,16 @@ namespace Rosanna
             }
         }
 
+        private void SetCacheControl()
+        {
+            After += context =>
+            {
+                var cache = string.Format("public, max-age={0}", _config.CacheAge);
+                var noCache = "no-cache, must-revalidate";
+                context.Response.Headers.Add("Cache-Control", _config.CacheAge > 0 ? cache : noCache);
+            };
+        }
+
         private AtomResponse GetFeed()
         {
             var feed = _feedBuilder.GetFeed(_articleRepository.GetArticles());
@@ -55,14 +66,14 @@ namespace Rosanna
 
         private Response GetAbout()
         {
-            return CreateResponse(new AboutModel(_config));
+            return View[new AboutModel(_config)];
         }
 
         private Response GetIndex()
         {
             var articles = _articleRepository.GetArticles();
 
-            return CreateResponse( new IndexModel(_config, articles));
+            return View[new IndexModel(_config, articles)];
         }
 
         private Response GetArticle(string year, string month, string day, string slug)
@@ -71,35 +82,21 @@ namespace Rosanna
             if (article == null)
                 return new NotFoundResponse();
 
-            return CreateResponse(new ArticleModel(_config, article));
+            return View[new ArticleModel(_config, article)];
         }
 
         private Response GetArchive(string year = "*", string month = "*", string day = "*")
         {
             IEnumerable<Article> articles = _articleRepository.GetArticles(year, month, day);
 
-            return CreateResponse(new ArchiveModel(_config, year, month, day, articles));
+            return View[new ArchiveModel(_config, year, month, day, articles)];
         }
 
         private Response GetArchiveByMeta(string key, string value)
         {
             var articles = _articleRepository.GetArticlesByMeta(key, value);
 
-            return CreateResponse(new ArchiveModel(_config, key, value, articles));
-        }
-
-        private Response CreateResponse(dynamic model)
-        {
-            Response response = View[model];
-            SetCacheControl(response);
-            return response;
-        }
-
-        private void SetCacheControl(Response response)
-        {
-            var cache = string.Format("public, max-age={0}", _config.CacheAge);
-            var noCache = "no-cache, must-revalidate";
-            response.Headers.Add("Cache-Control", _config.CacheAge > 0 ? cache : noCache);
+            return View[new ArchiveModel(_config, key, value, articles)];
         }
     }
 }

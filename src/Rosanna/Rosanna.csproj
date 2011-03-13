@@ -31,15 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MarkdownSharp">
-      <HintPath>..\..\lib\MarkdownSharp.dll</HintPath>
+    <Reference Include="MarkdownSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Nancy">
-      <HintPath>..\..\lib\Nancy.dll</HintPath>
-    </Reference>
-    <Reference Include="Nancy.Hosting.Aspnet">
-      <HintPath>..\..\lib\Nancy.Hosting.Aspnet.dll</HintPath>
+    <Reference Include="Nancy, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.0.4.0\lib\4.0\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,7 +56,6 @@
     <Compile Include="RosannaBootstrapper.cs" />
     <Compile Include="RosannaConfiguration.cs" />
     <Compile Include="IRosannaConfiguration.cs" />
-    <Compile Include="RosannaHttpRequestHandler.cs" />
     <Compile Include="RosannaServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AboutModel.cs" />
@@ -69,6 +65,9 @@
     <Compile Include="ViewModels\ArticleSummary.cs" />
     <Compile Include="ViewModels\BaseModel.cs" />
     <Compile Include="ViewModels\IndexModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

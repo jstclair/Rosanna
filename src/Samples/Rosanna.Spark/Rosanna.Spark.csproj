@@ -34,15 +34,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Nancy, Version=0.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Nancy.dll</HintPath>
+    <Reference Include="Nancy, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nancy.0.4.0\lib\4.0\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.ViewEngines.Spark">
-      <HintPath>..\..\..\lib\Nancy.ViewEngines.Spark.dll</HintPath>
+    <Reference Include="Nancy.Hosting.Aspnet, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nancy.Hosting.Aspnet.0.4.0\lib\4.0\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
-    <Reference Include="Spark">
-      <HintPath>..\..\..\lib\Spark.dll</HintPath>
+    <Reference Include="Nancy.ViewEngines.Spark, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Nancy.Viewengines.Spark.0.4.0\lib\4.0\Nancy.ViewEngines.Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark, Version=1.5.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Spark.1.5.1\lib\NET40\Spark.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -74,6 +76,7 @@
     <None Include="Articles\2010-07-06-nancy.md" />
     <None Include="Articles\2010-08-04-rosanna.md" />
     <None Include="Articles\2010-08-05-new-blog-in-five-minutes.md" />
+    <Content Include="packages.config" />
     <None Include="Views\Shared\Application.spark" />
     <None Include="Views\Archive.spark" />
     <None Include="Views\Article.spark" />

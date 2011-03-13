@@ -2,7 +2,7 @@ require 'rubygems'
 require 'albacore'
 require 'rake/clean'
 
-VERSION = "0.0.1.0"
+VERSION = "0.1.0"
 OUTPUT = "build"
 CONFIGURATION = 'Release'
 ASSEMBLY_INFO = 'src/Rosanna/Properties/AssemblyInfo.cs'
@@ -23,6 +23,7 @@ task :test => [:xunit]
 CLEAN.include(OUTPUT)
 CLEAN.include(FileList["src/**/#{CONFIGURATION}"])
 CLEAN.include("TestResult.xml")
+CLEAN.include("*.nuspec")
 
 desc "Update assemblyinfo file for the build"
 assemblyinfo :version => [:clean] do |asm|
@@ -30,7 +31,7 @@ assemblyinfo :version => [:clean] do |asm|
 	asm.company_name = "Rosanna"
 	asm.product_name = "Rosanna"
 	asm.title = "Rosanna"
-	asm.description = "The tiniest blogging engine in .NET! (A port of toto)"
+	asm.description = "The ten second blog engine for .NET"
 	asm.copyright = "Copyright (C) Thomas Pedersen"
 	asm.output_file = ASSEMBLY_INFO
 	asm.com_visible = false
@@ -58,8 +59,25 @@ xunit :xunit => [:compile] do |xunit|
 end	
 
 desc "Creates a NuGet packaged based on the Rosanna.nuspec file"
-exec :package => [:publish] do |cmd|
+nugetpack :package => [:publish, :nuspec] do |nuget|
 	Dir.mkdir("#{OUTPUT}/nuget")
-	cmd.command = "tools/nuget.exe"
-	cmd.parameters "pack Rosanna.nuspec -o #{OUTPUT}/nuget"
+	
+    nuget.command     = "tools/nuget.exe"
+    nuget.nuspec      = "Rosanna.nuspec"
+	nuget.base_folder = "#{OUTPUT}/binaries/"
+    nuget.output      = "#{OUTPUT}/nuget/"
+end
+
+desc "Create the nuget package specification"
+nuspec do |nuspec|
+    nuspec.id="Rosanna"
+    nuspec.version = VERSION
+    nuspec.authors = "Thomas Pedersen (thedersen)"
+    nuspec.description = "The ten second blog engine for .NET"
+    nuspec.language = "en-US"
+    nuspec.projectUrl = "https://github.com/thedersen/Rosanna"
+	nuspec.file "Rosanna.dll", "lib/net40"
+    nuspec.dependency "Nancy", "0.4.0"
+    nuspec.dependency "MarkdownSharp", "1.13.0.0"
+    nuspec.output_file = "Rosanna.nuspec"
 end

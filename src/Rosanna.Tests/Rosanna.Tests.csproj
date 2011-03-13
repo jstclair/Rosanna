@@ -37,10 +37,6 @@
     <Reference Include="Nancy">
       <HintPath>..\..\lib\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.ViewEngines.Razor, Version=0.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Nancy.ViewEngines.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,7 +85,7 @@
     <Content Include="Web\Styles\Application.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Web\Views\index.cshtml">
+    <Content Include="Web\Views\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -98,10 +94,10 @@
     <None Include="Web\Articles\2010-08-05-new-blog-in-five-minutes.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Web\Views\article.cshtml">
+    <Content Include="Web\Views\article.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Web\Views\archive.cshtml">
+    <Content Include="Web\Views\archive.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Web\Articles\2010-08-04-rosanna.md">
@@ -113,7 +109,7 @@
     <None Include="Web\Articles\2009-01-01-toto.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Web\Views\about.cshtml">
+    <Content Include="Web\Views\about.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

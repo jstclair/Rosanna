@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using Nancy;
 using Nancy.ViewEngines;
-using Nancy.ViewEngines.Razor;
 
 namespace Rosanna.Tests.Specifications
 {
@@ -42,9 +41,9 @@ namespace Rosanna.Tests.Specifications
         public ViewLocationResult LocateView(string viewName, IEnumerable<string> supportedViewEngineExtensions)
         {
             var viewFolder = Path.Combine(Environment.CurrentDirectory, "web", "views");
-            var viewFile = Path.Combine(viewFolder, viewName + ".cshtml");
+            var viewFile = Path.Combine(viewFolder, viewName + ".html");
 
-            return new ViewLocationResult(viewFile, "cshtml", new StreamReader(viewFile));
+            return new ViewLocationResult(viewFile, "html", new StreamReader(viewFile));
         }
     }
 }

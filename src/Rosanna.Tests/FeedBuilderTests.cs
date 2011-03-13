@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.ServiceModel.Syndication;
+using Should;
 using Xunit;
 
 namespace Rosanna.Tests
@@ -50,7 +51,7 @@ namespace Rosanna.Tests
         [Fact]
         public void Adds_an_entry_for_each_article()
         {
-            _feed.Items.ShouldHaveCount(4);
+            _feed.Items.Count().ShouldEqual(4);
         }
 
         [Fact]

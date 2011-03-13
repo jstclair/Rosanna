@@ -1,3 +1,4 @@
+using Should;
 using Xunit.Extensions;
 
 namespace Rosanna.Tests.Specifications

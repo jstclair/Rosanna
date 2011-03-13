@@ -37,6 +37,9 @@
     <Reference Include="Nancy, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nancy.0.4.0\lib\4.0\Nancy.dll</HintPath>
     </Reference>
+    <Reference Include="Should">
+      <HintPath>..\packages\Should.1.1.12.0\lib\Should.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,7 +61,6 @@
     <Compile Include="PathResolverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseExtensions.cs" />
-    <Compile Include="ShouldExtensions.cs" />
     <Compile Include="Specifications\CachingSpecs.cs" />
     <Compile Include="Specifications\GetAboutSpecs.cs" />
     <Compile Include="Specifications\GetArchiveSpecs.cs" />

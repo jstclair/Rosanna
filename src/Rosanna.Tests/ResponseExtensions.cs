@@ -1,6 +1,4 @@
 using Nancy;
-using Nancy.Cookies;
-using System;
 using System.IO;
 
 namespace Rosanna.Tests
@@ -16,15 +14,6 @@ namespace Rosanna.Tests
             {
                 return reader.ReadToEnd();
             }
-        }
-
-        public static void ShouldEqual(this INancyCookie cookie, string name, string value, DateTime? expires, string domain, string path)
-        {
-            cookie.Name.ShouldEqual(name);
-            cookie.Value.ShouldEqual(value);
-            cookie.Expires.ShouldEqual(expires);
-            cookie.Domain.ShouldEqual(domain);
-            cookie.Path.ShouldEqual(path);
         }
     }
 }

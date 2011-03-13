@@ -1,4 +1,5 @@
 ﻿using Rosanna.ViewModels;
+using Should;
 using Xunit;
 
 namespace Rosanna.Tests
@@ -92,8 +93,8 @@ namespace Rosanna.Tests
         [Fact]
         public void Body_is_rendered_using_markdown()
         {
-            _article.Body.ShouldMatch(s => s.StartsWith("<p>As part of learning"));
-            _article.Body.ShouldMatch(s => s.EndsWith("cost you five minutes.</p>\n"));
+            _article.Body.StartsWith("<p>As part of learning").ShouldBeTrue();
+            _article.Body.EndsWith("cost you five minutes.</p>\n").ShouldBeTrue();
         }
 
         [Fact]

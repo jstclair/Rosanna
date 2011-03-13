@@ -1,4 +1,5 @@
 using Nancy;
+using Should;
 using Xunit;
 
 namespace Rosanna.Tests.Specifications

@@ -1,4 +1,5 @@
 using Rosanna.ViewModels;
+using Should;
 using Xunit;
 
 namespace Rosanna.Tests

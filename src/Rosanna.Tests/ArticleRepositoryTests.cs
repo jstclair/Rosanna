@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Rosanna.ViewModels;
+using Should;
 using Xunit;
 
 namespace Rosanna.Tests
@@ -38,7 +39,7 @@ namespace Rosanna.Tests
         {
             IEnumerable<Article> articles = _repository.GetArticles("2010", "08", "05");
 
-            articles.ShouldHaveCount(1);
+            articles.Count().ShouldEqual(1);
             articles.First().Title.ShouldEqual("New blog in five minutes");
         }
 
@@ -47,7 +48,7 @@ namespace Rosanna.Tests
         {
             IEnumerable<Article> articles = _repository.GetArticles("2010", "08");
 
-            articles.ShouldHaveCount(2);
+            articles.Count().ShouldEqual(2);
             articles.First().Title.ShouldEqual("New blog in five minutes");
             articles.Last().Title.ShouldEqual("Rosanna");
         }
@@ -57,7 +58,7 @@ namespace Rosanna.Tests
         {
             IEnumerable<Article> articles = _repository.GetArticles("2010");
 
-            articles.ShouldHaveCount(3);
+            articles.Count().ShouldEqual(3);
             articles.ElementAt(0).Title.ShouldEqual("New blog in five minutes");
             articles.ElementAt(1).Title.ShouldEqual("Rosanna");
             articles.ElementAt(2).Title.ShouldEqual("Nancy");
@@ -68,7 +69,7 @@ namespace Rosanna.Tests
         {
             IEnumerable<Article> articles = _repository.GetArticles();
 
-            articles.ShouldHaveCount(4);
+            articles.Count().ShouldEqual(4);
             articles.ElementAt(0).Title.ShouldEqual("New blog in five minutes");
             articles.ElementAt(1).Title.ShouldEqual("Rosanna");
             articles.ElementAt(2).Title.ShouldEqual("Nancy");
@@ -80,7 +81,7 @@ namespace Rosanna.Tests
         {
             IEnumerable<Article> articles = _repository.GetArticlesByMeta("tags", "tag");
 
-            articles.ShouldHaveCount(1);
+            articles.Count().ShouldEqual(1);
             articles.First().Title.ShouldEqual("Rosanna");
         }
 
@@ -89,7 +90,7 @@ namespace Rosanna.Tests
         {
             IEnumerable<Article> articles = _repository.GetArticlesByMeta("author", "Rosanna");
 
-            articles.ShouldHaveCount(1);
+            articles.Count().ShouldEqual(1);
             articles.First().Title.ShouldEqual("Rosanna");
         }
     }

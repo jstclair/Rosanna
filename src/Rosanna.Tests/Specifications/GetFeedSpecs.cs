@@ -1,5 +1,6 @@
 using Nancy;
 using Rosanna.Formatters;
+using Should;
 using Xunit;
 
 namespace Rosanna.Tests.Specifications
@@ -20,7 +21,7 @@ namespace Rosanna.Tests.Specifications
         [Fact]
         public void Response_is_atom_response()
         {
-            Response.ShouldBeOfType<AtomResponse>();
+            Response.ShouldBeType<AtomResponse>();
         }
 
         [Fact]

@@ -37,4 +37,4 @@ To run a particular task ('test' for example), use the following command:
 After the build has completed, there will be a new folder in the root called "build". It contains the following folders:
 
 * binaries -> All the Rosanna assembilies and their dependencies
-* nuget -> The Rosanna[version].nupkg (TODO)
+* nuget -> The Rosanna[version].nupkg

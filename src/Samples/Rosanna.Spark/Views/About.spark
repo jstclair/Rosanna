@@ -1,5 +1,5 @@
 ﻿<viewdata model="Rosanna.ViewModels.AboutModel"/>
 
-<content name"Main">
+<content name="Main">
     <h1>About Rosanna</h1>
 </content>

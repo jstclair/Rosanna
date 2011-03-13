@@ -1,9 +1,11 @@
 <viewdata model="Rosanna.ViewModels.ArchiveModel"/>
 
-<content name"Main">
+<content name="Main">
     <h1>${Model.Path}</h1>
 
-    <for each="var article in Model.Articles">
-        <h3><a href="${article.Path}">${article.Title}</a></h3>
-    </for>
+    <ul>
+        <li each="var article in Model.Articles">
+            <a href="${article.Path}">${article.Title}</a>
+        </li>
+    </ul>
 </content>

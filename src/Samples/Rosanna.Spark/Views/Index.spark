@@ -1,9 +1,17 @@
 <viewdata model="Rosanna.ViewModels.IndexModel"/>
 
-<content name="Main"> 
-    <var i="0" />
-    <for each="var article in Model.Articles" i="i+1">
-        <h1><a href="${article.Path}">${article.Title}</a></h1>
-        <p if="i<3">${article.Summary}</p>
-    </for>
+<content name="Main">
+    <section id="articles">
+        <article each="var article in Model.Articles" class="post">
+          <header>
+            <h1><a href="${article.Path}">${article.Title}</a></h1>
+            <span class="date">${article.Date}</span>
+          </header>
+
+          <section class="content">
+            ${article.Summary}
+          </section>
+          <div class="more"><a href="${article.Path}">read on &raquo;</a></div>
+        </article>
+    </section>
 </content>

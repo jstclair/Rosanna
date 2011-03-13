@@ -58,7 +58,7 @@
   <ItemGroup>
     <Content Include="Images\404.jpg" />
     <Content Include="Scripts\Application.js" />
-    <Content Include="Styles\Application.css" />
+    <Content Include="styles\Application.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

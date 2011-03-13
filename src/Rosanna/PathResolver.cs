@@ -25,9 +25,6 @@ namespace Rosanna
         {
             string path = GetPath(virtualPath);
 
-            if (HostingEnvironment.IsHosted)
-                path = "~/" + path;
-
             return AppendTrailingSlash(path);
         }
 

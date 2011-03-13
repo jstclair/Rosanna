@@ -9,7 +9,6 @@ namespace Rosanna
             DateFormat = date => string.Format("{0:MMMM} {1} {0:yyyy}", date, date.Day.ToOrdinal());
             ArticleExtension = ".md";
             SummaryDelimiter = "~\n";
-            StaticContent = new[] {"/Scripts", "/Styles", "/Images"};
         }
 
         public Func<DateTime, string> DateFormat { get; set; }
@@ -29,7 +28,5 @@ namespace Rosanna
         public string SummaryDelimiter { get; set; }
 
         public int CacheAge { get; set; }
-
-        public string[] StaticContent { get; set; }
     }
 }

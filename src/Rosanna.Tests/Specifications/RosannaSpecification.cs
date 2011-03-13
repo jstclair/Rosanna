@@ -17,9 +17,8 @@ namespace Rosanna.Tests.Specifications
         {
             var bootstrapper = new RosannaBootstrapper();
             bootstrapper.Initialise();
+
             Engine = bootstrapper.GetEngine();
-            bootstrapper.Container.Register<IViewSourceProvider, FileSystemViewSourceProvider>();
-            bootstrapper.Container.Register<IViewEngine, RazorViewEngine>();
             Config = bootstrapper.Container.Resolve<IRosannaConfiguration>();
         }
 
@@ -27,6 +26,14 @@ namespace Rosanna.Tests.Specifications
         {
             route = "/" + Config.Prefix + route;
             Response = Engine.HandleRequest(new Request("GET", route, "http")).Response;
+        }
+    }
+
+    public class RootPathProvider : IRootPathProvider
+    {
+        public string GetRootPath()
+        {
+            return Environment.CurrentDirectory;
         }
     }
 

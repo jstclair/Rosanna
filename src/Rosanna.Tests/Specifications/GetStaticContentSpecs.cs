@@ -5,24 +5,19 @@ namespace Rosanna.Tests.Specifications
 {
     public class GetStaticContentSpecs : RosannaSpecification
     {
-        public GetStaticContentSpecs()
-        {
-            Config.StaticContent = new[] { "/Scripts", "/Styles" };
-        }
-
         [Fact]
         public void Can_get_static_javascript()
         {
-            NavigateTo("/Scripts/Application.js");
+            NavigateTo("/scripts/Application.js");
 
             Response.StatusCode.ShouldEqual(HttpStatusCode.OK);
-            Response.ContentType.ShouldEqual("application/javascript");
+            Response.ContentType.ShouldEqual("text/javascript");
         }
         
         [Fact]
         public void Can_get_static_css()
         {
-            NavigateTo("/Styles/Application.css");
+            NavigateTo("/styles/Application.css");
 
             Response.StatusCode.ShouldEqual(HttpStatusCode.OK);
             Response.ContentType.ShouldEqual("text/css");

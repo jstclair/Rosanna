@@ -40,17 +40,16 @@ namespace Rosanna
 
         private void DefineStaticContentRoutes()
         {
-            foreach (var path in _config.StaticContent)
-            {
-                string path1 = path;
-                Get[path + "/{filename}"] = x => new StaticFileResponse(_pathResolver.GetMappedPath(path1 + "/" + x.filename));
-            }
+            Get["/scripts/{filename}"] = x => Response.AsJs(_pathResolver.GetVirtualPath("/scripts/" + (string)x.filename));
+            Get["/styles/{filename}"] = x => Response.AsCss(_pathResolver.GetVirtualPath("/styles/" + (string)x.filename));
+            Get["/images/{filename}"] = x => Response.AsImage(_pathResolver.GetVirtualPath("/images/" + (string)x.filename));
         }
 
         private void SetCacheControl()
         {
             After += context =>
             {
+                // todo: Add ETag
                 var cache = string.Format("public, max-age={0}", _config.CacheAge);
                 var noCache = "no-cache, must-revalidate";
                 context.Response.Headers.Add("Cache-Control", _config.CacheAge > 0 ? cache : noCache);
